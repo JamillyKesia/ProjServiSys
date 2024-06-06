@@ -1,0 +1,35 @@
+<app-nav-coord></app-nav-coord>
+
+<div class="container-custom">
+    <div class="content-title">
+        <p>Nessa página você encontra suas aprovações de ordens de serviço.</p>
+    </div>
+    <div class="table-line">
+        <table class="table table-ajuste">
+          <thead>
+            <tr>
+              <th>ID da ordem</th>
+              <th>Status da ordem</th>
+              <th>Data da atribuição</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ordem of ordens">
+              <td>{{ ordem.id }}</td>
+              <td>
+                <span [ngClass]="{'badge-success': ordem.status === 'Aprovada', 'badge-danger': ordem.status === 'Rejeitado'}" class="badge status-span">
+                  {{ ordem.status }}
+                </span>
+              </td>
+              <td>{{ ordem.data }}</td>
+              <td>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+  </div>
+

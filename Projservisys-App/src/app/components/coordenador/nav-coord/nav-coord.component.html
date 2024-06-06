@@ -1,0 +1,37 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  
+
+<!-- Sidebar -->
+<div class="navs-content">
+    <!-- Sidebar -->
+    
+    <div class="sidebar">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid flex-column">
+          <a class="navbar-brand" [routerLink]="'/home/coord'"><img src="../../../../assets/images/ServiSysLogoADM.png" height="27rem"></a>
+          <hr class="separator">
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="'/aprovacoes-pendentes'"><i class="bi bi-check-lg" style="font-size: 1.3rem;"></i>Aprovações pendentes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="'/suas-aprovacoes'"><i class="bi bi-list-check" style="font-size: 1.3rem;"></i> Suas aprovações</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main content -->
+    
+      <!-- Navbar -->
+      <nav class="navbar" id="navbar-top">
+          <p class="title-page">Página inicial</p>
+          <span class="navbar-text ml-auto">Frederico A. F.</span>
+          <a (click)="logout()" class="btn btn-outline-danger ml-3" style="cursor: pointer">Sair</a>
+      </nav>
+
+     </div>

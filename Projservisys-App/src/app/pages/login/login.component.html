@@ -1,0 +1,33 @@
+<div class="left-section">
+    <img class="logo" src="assets/images/ServiSysLogoBranca.png" alt="logo ServiSys">
+    <img class="img-decor" src="./assets/images/img-login.png" alt="ilustração verde com duas pessoas">
+</div>
+<div class="right-section">
+    <h4>Seja bem-vindo(a) ao</h4>
+    <h3>ServiSys!</h3>
+    <p class="frase-mobile">Seja bem-vindo(a) ao ServiSys</p>
+    <p>Entre com suas credenciais para acessar o sistema</p>
+    <form #loginForm="ngForm" (ngSubmit)="login()" method="POST">  
+        <label for="input1" class="login">Login</label>
+        <input
+        [(ngModel)]="model.username"
+        name="username" 
+        type="text" 
+        id="input1"
+        maxLength="50" 
+        required
+        >
+
+        <label for="input2" class="senha">Senha</label>
+        <input
+        [(ngModel)]="model.password"
+        name="password" 
+        type="password" 
+        maxLength="8" 
+        id="input2" 
+        required
+        >
+
+        <button [disabled]="loginForm.invalid" class="button" type="submit">Enviar</button>
+    </form>
+</div>

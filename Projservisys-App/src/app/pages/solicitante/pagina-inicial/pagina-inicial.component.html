@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+
+<div class="container-custom">
+    <div class="content-title">
+        <h1>Bem-vindo(a)!</h1>
+        <p>Confira suas ordens de serviço no menu "Suas ordens".</p>
+    </div>
+    <div class="table-line">
+        <p class="table-title">Suas últimas ordens</p>
+        <table class="table table-ajuste">
+          <thead>
+            <tr>
+              <th>ID da ordem</th>
+              <th>Status da ordem</th>
+              <th>Data da atribuição</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="ordens && ordens.length">
+            <tr *ngFor="let ordem of ordensFiltradas ">
+              <td>{{ ordem.id }}</td>
+              <td>
+                <!-- [ngClass]="{'badge-warning': ordem.estadoOrdemServico === 'Em andamento', 'badge-success': ordem.estadoOrdemServico === 'Concluída', 'badge-danger': ordem.estadoOrdemServico === 'Rejeitado', 'badge-secondary': ordem.estadoOrdemServico === 'Em análise'}" -->
+                <span class="badge estadoOrdemServico-span">
+                  {{ ordem.estadoOrdemServico }}
+                </span>
+              </td>
+              <td>{{ ordem.dataOrdemServico }}</td>
+              <td>
+                <!-- (click)="openModel2(ordem)" -->
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Ver</button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot *ngIf="!ordens.length">
+            <tr>
+                <td colspan="8">
+                    <h4>
+                        Nenhuma ordem encontrada!
+                    </h4>
+                </td>
+            </tr>
+        </tfoot>
+        </table>
+      </div>
+
+      <app-modal-os></app-modal-os>
+<!-- 
+      <div class="" *ngIf="modalSwitch">
+        <app-modal-os></app-modal-os>
+    </div> -->
+      
+  </div>

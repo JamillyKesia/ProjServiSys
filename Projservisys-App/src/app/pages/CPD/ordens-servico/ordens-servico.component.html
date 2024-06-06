@@ -1,0 +1,45 @@
+<app-nav-cpd></app-nav-cpd>
+
+<div class="container-custom">
+    <div class="content-title">
+        <p>Nessa página você encontra suas requisições de ordens de serviço</p>
+    </div>
+    <div class="table-line">
+        <table class="table table-ajuste">
+          <thead>
+            <tr>
+              <th>ID da ordem</th>
+              <th>Status da ordem</th>
+              <th>Data da atribuição</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="ordens && ordens.length">
+            <tr *ngFor="let ordem of ordensFiltradas ">
+              <td>{{ ordem.id }}</td>
+              <td>
+                <!-- [ngClass]="{'badge-warning': ordem.estadoOrdemServico === 'Em andamento', 'badge-success': ordem.estadoOrdemServico === 'Concluída',  'badge-secondary': ordem.estadoOrdemServico === 'Compra'}" -->
+                <span  class="badge estadoOrdemServico-span">
+                  {{ ordem.estadoOrdemServico }}
+                </span>
+              </td>
+              <td>{{ ordem.dataOrdemServico }}</td>
+              <td>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot *ngIf="!ordens.length">
+            <tr>
+                <td colspan="8">
+                    <h4>
+                        Nenhuma ordem encontrada!
+                    </h4>
+                </td>
+            </tr>
+        </tfoot>
+        </table>
+      </div>
+      
+  </div>
+

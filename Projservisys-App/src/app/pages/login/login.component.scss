@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&display=swap');
+@import './../../../assets/styles/variaveis.scss';
+
+:host {
+    //representa uma div que engloba todo o código
+    display: flex;
+    height: 100vh; /* Altura total da viewport */
+    background: $degrade-esquerda;
+    //margin: 0;
+
+    .left-section {
+        display: flex;
+        flex-direction: column;
+        background: $degrade-esquerda;
+        flex: 1;
+        //border-radius: 0px 70px 70px 0px;
+
+        .logo {
+            width: 300px;
+            height: 70px;
+            margin: 70px 60% 50px 30%;
+        }
+
+        .img-decor {
+            width: 60%; //470px;
+            height: 60%; //400px;
+            margin-top: 2%;
+            margin-left: 20%;
+        }
+    }
+
+    .right-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        background: $cor-direita;
+        font-family: 'Inter', sans-serif;
+        border-radius: 70px 0px 0px 70px;
+
+
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 36px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #008059;
+            margin-top: 8%;
+            margin-left: 20%;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.3125rem;
+            font-weight: 700;
+            line-height: 45px;
+            text-align: left;
+            color: $verde-claro;
+            margin-left: 20%;
+            margin-bottom: 5%;
+        }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: $verde-escuro;
+            margin-left: 20%;
+            margin-bottom: 5%;
+        }
+
+        .login,
+        .senha {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: $verde-claro;
+            margin-left: 20%;
+            margin-bottom: 80%;
+        }
+
+        #input1,
+        #input2 {
+            width: 60%;
+            height: 18%;
+            border-radius: 13px;
+            border: 1px;
+            background: $fundo-input;
+            border: 1px solid $borda-input;
+            display: flex;
+            margin-left: 20%;
+            margin-top: 20px;
+            padding-left: 2%;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #input1{
+            margin-bottom: 2%;
+        }
+
+        #input2{
+            margin-top: 20px;
+        }
+
+        .button {
+            //min-width: 40%;
+            font-family: 'Inter', sans-serif;
+            padding: 15px 25.5%;
+            border-radius: 13px;
+            border: 2px solid $verde-escuro;
+            background-color: $verde-escuro;
+            color: $branco;
+            font-size: 1.3125rem;
+            font-weight: 700;
+            line-height: 25px;
+            text-align: center;
+            margin-top: 60px;
+            margin-left: 20%;
+
+        }
+
+        .button:hover {
+            font-family: 'Inter', sans-serif;
+            padding: 15px 25.5%;
+            border-radius: 13px;
+            border: 2px solid $verde-escuro;
+            background-color: $cor-botao;
+            color: $verde-escuro;
+            font-size: 1.3125rem;
+            font-weight: 700;
+            line-height: 25px;
+            text-align: center;
+
+        }
+
+        .frase-mobile{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :host {
+        //width: 100%; /* Ajusta a largura para ocupar 90% da largura da tela */
+        background: #43CD95;
+        flex-direction: column;
+
+        .left-section {
+            background: #43CD95;
+            border-radius: 0px;
+            font-family: 'Inter', sans-serif;
+            flex: none; /* Remover o comportamento flexível */
+            width: auto; /* Definir a largura como automática */
+
+            .logo {
+                width: 40%;
+                height: 50px;
+                margin: 45px 60% 0px 30%;
+            }
+    
+            .img-decor {
+                display: none; /* Oculta o componente */
+            }
+        }
+
+        .right-section {
+            background-color: $branco;
+            margin: 40px 7%;
+            padding: 80px 0px;
+            border-radius: 37px;
+            font-family: 'Inter', sans-serif;
+            flex: none; /* Remover o comportamento flexível */
+            width: auto; /* Definir a largura como automática */
+        
+            h4 {
+                display: none;
+            }
+    
+            h3 {
+                display: none;
+            }
+    
+            p {
+               display: none;
+            }
+    
+            .login,
+            .senha {
+                font-family: 'Inter', sans-serif;
+                font-size: 1.2rem;
+                font-weight: 700;
+                line-height: 30px;
+                color: $verde-claro;
+                margin-left: 12%;
+            }
+    
+            #input1,
+            #input2 {
+                width: 80%;
+                height: 18%;
+                border-radius: 13px;
+                background: $fundo-input;
+                border: 1px solid $borda-input;
+                display: flex;
+                margin-left: 10%;
+                margin-top: 20px;
+                font-size: 1.2rem;
+                font-family: 'Inter', sans-serif;
+            }
+    
+            .button {
+                font-family: 'Inter', sans-serif;
+                padding: 10px 32%;
+                border-radius: 13px;
+                border: 2px solid $verde-escuro;
+                background-color: $verde-escuro;
+                color: $branco;
+                font-size: 1.3125rem;
+                font-weight: 700;
+                line-height: 25px;
+                text-align: center;
+                margin: 60px 0px 20px 10%;
+            }
+    
+            .button:hover {
+                font-family: 'Inter', sans-serif;
+                padding: 10px 32%;
+                border-radius: 13px;
+                border: 2px solid $verde-escuro;
+                background-color: $cor-botao;
+                color: $verde-escuro;
+                font-size: 1.3125rem;
+                font-weight: 700;
+                line-height: 25px;
+                text-align: center;
+    
+            }
+
+            .frase-mobile{
+                display: block;
+                color: $verde-frase;
+                font-family: 'Inter', sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+                margin-left: 20%;
+                margin-bottom: 10%;
+            }
+        }
+
+    }
+}

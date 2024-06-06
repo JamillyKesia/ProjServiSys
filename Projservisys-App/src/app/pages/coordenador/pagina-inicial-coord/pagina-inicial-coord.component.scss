@@ -1,0 +1,24 @@
+@import './../../../../assets/styles/variaveis.scss';
+
+.content-title{
+    margin: 10px 0px 40px 10px;
+    color: $verde-escuro;
+}
+
+.form-content{
+    border: 1px solid $cor-linha;
+    padding: 35px;
+    border-radius: 20px;
+}
+
+.form-content label{
+    color: $verde-escuro;
+    font-weight: 600;
+}
+
+.container-custom {
+    padding: 20px;
+    margin-left: 16%;
+    width: 80%;
+    transition: margin-left 0.3s;
+  }
