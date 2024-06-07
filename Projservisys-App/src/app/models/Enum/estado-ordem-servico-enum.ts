@@ -2,7 +2,7 @@ export enum EstadoOrdemServicoEnum {
   EmAnalise = "EmAnálise",
   Aprovada = "Aprovada",
   NaoAprovada = "NãoAprovada",
-  Concluida = "Concluída",
+  Concluida = "Concluida",
   EmAndamento = "EmAndamento",
   ItemParaCompra = "ItemParaCompra"
 }

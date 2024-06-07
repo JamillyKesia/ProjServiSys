@@ -18,7 +18,11 @@
         <tr *ngFor="let ordem of ordensFiltradas">
           <td>{{ ordem.id }}</td>
           <td>
-            <span class="badge estadoOrdemServico-span">
+            <span [ngClass]="{
+              'badge-warning': ordem.estadoOrdemServico === estadoOrdemServicoEnum.EmAndamento,
+              'badge-success': ordem.estadoOrdemServico === estadoOrdemServicoEnum.Concluida,
+              'badge-secondary': ordem.estadoOrdemServico === estadoOrdemServicoEnum.ItemParaCompra
+            }" class="badge estadoOrdemServico-span">
               {{ ordem.estadoOrdemServico }}
             </span>
           </td>

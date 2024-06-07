@@ -35,6 +35,34 @@
       color: $verde-escuro;
   }
 
+  .badge-warning {
+    background-color: yellow;
+    color: black; /* Adapte a cor do texto conforme necessário */
+    .estadoOrdemServico-span{
+      padding: 10px;
+      border-radius: 10px;
+  } 
+  }
+
+.badge-success {
+    background-color: green;
+    color: white; /* Adapte a cor do texto conforme necessário */
+    .estadoOrdemServico-span{
+      padding: 10px;
+      border-radius: 10px;
+  } 
+}
+
+.badge-secondary {
+    background-color: grey;
+    color: white; /* Adapte a cor do texto conforme necessário */
+    .estadoOrdemServico-span{
+      padding: 10px;
+      border-radius: 10px;
+  } 
+}
+
+
   .filter-buttons{
     margin: 10px 0px 30px 10px;
   }
