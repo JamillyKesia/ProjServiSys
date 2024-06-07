@@ -2,10 +2,12 @@ import { OrdemServico } from "./ordem-servico";
 
 export interface User {
     id: number;
-    nomeLogin: string;
-    nomeUsuario: string;
+    username: string;
+    primeiroNome: string;
+    ultimoNome: string;
     cargo: CargoEnum;
     tipoUsuario: TipoUsuarioEnum;
+    email: String;
     ordensDeServico?: OrdemServico[];
 }
 

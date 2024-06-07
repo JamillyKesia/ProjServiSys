@@ -10,6 +10,7 @@ export enum EstadoOrdemServicoEnum {
 // ordem-servico.ts
 export interface OrdemServico {
   id: number;
+  primeiroNome: string;
   descricaoProblema: string;
   estadoOrdemServico: EstadoOrdemServicoEnum;
 }

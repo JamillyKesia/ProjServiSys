@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody *ngIf="ordens && ordens.length">
-            <tr *ngFor="let ordem of ordensFiltradas ">
+            <tr *ngFor="let ordem of ordensFiltradas">
               <td>{{ ordem.id }}</td>
               <td>
                 <!-- [ngClass]="{'badge-warning': ordem.estadoOrdemServico === 'Em andamento', 'badge-success': ordem.estadoOrdemServico === 'Concluída', 'badge-danger': ordem.estadoOrdemServico === 'Rejeitado', 'badge-secondary': ordem.estadoOrdemServico === 'Em análise'}" -->

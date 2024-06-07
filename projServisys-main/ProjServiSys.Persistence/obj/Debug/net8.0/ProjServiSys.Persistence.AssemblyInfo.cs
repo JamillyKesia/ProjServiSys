@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjServiSys.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfbaeb5b6d1b5f2791c8d07e220739f5175fa4a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a4fb175215fba99774e84d3972f20be99bdb0f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjServiSys.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjServiSys.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

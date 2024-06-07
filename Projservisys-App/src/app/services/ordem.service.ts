@@ -38,6 +38,14 @@ export class OrdemService {
     .patch(`${this.baseURL}/Aprovado/${id}`, changes).pipe(take(1));
   }
 
+  public AprovarOrdem(id: number): Observable<OrdemServico> {
+    return this.http.patch<OrdemServico>(`${this.baseURL}/Aprovado/${id}`, {}).pipe(take(1));
+  }
+
+  public RejeitarOrdem(id: number): Observable<OrdemServico> {
+    return this.http.patch<OrdemServico>(`${this.baseURL}/Rejeitado/${id}`, {}).pipe(take(1));
+  }
+
   /*public PutOrdemServico(id: number, ordens: OrdemServico): Observable<OrdemServico>{
     return this.http
     .put<OrdemServico>(`${this.baseURL}${id}`,ordens).pipe(take(1));
