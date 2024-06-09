@@ -67,4 +67,19 @@ export class SuasOrdensComponent {
     });
   }
 
+  public getBadgeClass(estado: EstadoOrdemServicoEnum): string {
+    switch (estado) {
+      case EstadoOrdemServicoEnum.EmAndamento:
+        return 'badge-warning';
+      case EstadoOrdemServicoEnum.Concluida:
+        return 'badge-success';
+      case EstadoOrdemServicoEnum.NaoAprovada:
+        return 'badge-danger';
+      case EstadoOrdemServicoEnum.EmAnalise:
+        return 'badge-secondary';
+      default:
+        return 'badge-primary';
+    }
+  }
+
 }

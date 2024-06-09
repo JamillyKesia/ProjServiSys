@@ -18,7 +18,7 @@
         <tr *ngFor="let ordem of ordensFiltradas">
           <td>{{ ordem.id }}</td>
           <td>
-            <span class="badge estadoOrdemServico-span">
+            <span [ngClass]="getBadgeClass(ordem.estadoOrdemServico)" class="badge estadoOrdemServico-span">
               {{ ordem.estadoOrdemServico }}
             </span>
           </td>
