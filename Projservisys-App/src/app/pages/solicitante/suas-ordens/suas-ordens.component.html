@@ -5,6 +5,12 @@
         <p>Nessa página você encontra suas requisições de ordens de serviço</p>
     </div>
 
+    <div class="filter-buttons">
+      <button class="btn btn-secondary" (click)="mostrarTodas()">Todas as ordens</button>
+      <button class="btn btn-secondary" (click)="mostrarConcluidas()">Concluídas</button>
+      <button class="btn btn-secondary" (click)="mostrarRejeitadas()">Rejeitadas</button>
+  </div>
+
     <div class="table-line">
         <table class="table table-ajuste">
           <thead>

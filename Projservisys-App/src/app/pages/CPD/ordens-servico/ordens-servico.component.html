@@ -4,8 +4,18 @@
   <div class="content-title">
     <p>Nessa página você encontra suas requisições de ordens de serviço</p>
   </div>
+  
+  <!-- Botões de filtro -->
+  <div class="btn-group mb-3"  aria-label="Filtro de ordens">
+    <button class="btn btn-secondary" (click)="filtrarOrdens('todas')">Todas as ordens</button>
+    <button class="btn btn-secondary" (click)="filtrarOrdens('concluidas')">Concluídas</button>
+    <button class="btn btn-secondary" (click)="filtrarOrdens('emandamento')">Em andamento</button>
+  </div>
+
+  <!-- Tabela de ordens de serviço -->
   <div class="table-line">
     <table class="table table-ajuste">
+      <!-- Cabeçalho da tabela -->
       <thead>
         <tr>
           <th>ID da ordem</th>
@@ -14,6 +24,7 @@
           <th>Ação</th>
         </tr>
       </thead>
+      <!-- Corpo da tabela -->
       <tbody *ngIf="ordensFiltradas && ordensFiltradas.length">
         <tr *ngFor="let ordem of ordensFiltradas">
           <td>{{ ordem.id }}</td>
@@ -32,9 +43,10 @@
           </td>
         </tr>
       </tbody>
+      <!-- Rodapé da tabela -->
       <tfoot *ngIf="!ordensFiltradas.length">
         <tr>
-          <td colspan="8">
+          <td colspan="4">
             <h4>Nenhuma ordem encontrada!</h4>
           </td>
         </tr>

@@ -1,10 +1,12 @@
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot,  } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
 
 export const authGuard: CanActivateFn = (_route, _state) => {
   return true;
 
-  const router = inject(Router);
+
+
+  /*const router = inject(Router);
   //const toaster = inject(ToastrService);
 
   if (localStorage.getItem('user') !== null) {
@@ -13,7 +15,7 @@ export const authGuard: CanActivateFn = (_route, _state) => {
 
   //toaster.info('Usuário não autenticado!');
   router.navigate(['/login']);
-  return false;
+  return false;*/
 
   // constructor(
   //   private router:Router

@@ -23,6 +23,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ModalOsComponent } from './components/modal-os/modal-os.component';
+import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuario.component';
+import { NavAdmComponent } from './components/administrador/nav-adm/nav-adm.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ModalOsComponent } from './components/modal-os/modal-os.component';
     ModalCpdComponent,
     ModalCoordComponent,
     ModalSolicitanteComponent,
-    ModalOsComponent
+    ModalOsComponent,
+    AddUsuarioComponent,
+    NavAdmComponent
   ],
   imports: [
     BrowserModule,

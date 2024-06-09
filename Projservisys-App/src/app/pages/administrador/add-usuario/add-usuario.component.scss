@@ -1,0 +1,36 @@
+@import './../../../../assets/styles/variaveis.scss';
+
+.content-title{
+    margin: 10px 0px 40px 10px;
+    color: #22408E;
+}
+
+.form-content{
+    border: 1px solid $cor-linha;
+    padding: 35px;
+    border-radius: 20px;
+}
+
+.form-content label{
+    color: #22408E;
+    font-weight: 600;
+}
+
+.container-custom {
+    padding: 20px;
+    margin-left: 16%;
+    width: 80%;
+    transition: margin-left 0.3s;
+  }
+
+.btn-cadastrar{
+    background-color: #22408E;
+    border: #22408E 1px solid;
+    border-radius: 10px;
+}
+
+.btn-cadastrar:hover{
+    background-color: #19274C;
+    border: #19274C 1px solid;
+}
+

@@ -61,11 +61,14 @@ export class NovaOrdemComponent {
     return {'is-invalid': campoForm.errors && campoForm.touched};
   }
 
+
   //salvar ordens com api
   public salvarAlteracao(): void {
     if(this.formNO.valid){
 
       this.ordens = {... this.formNO.value};
+      console.log('Dados da nova ordem:', this.ordens);
+      
       this.ordemCompartilhadaService.mudarOrdem(this.ordens);
       this.ordemService.PostOrdemServico(this.ordens).subscribe(
         () => {
@@ -76,23 +79,8 @@ export class NovaOrdemComponent {
           console.error(error);
           this.modalMessage = 'Erro ao salvar evento';
           this.openModal(); //fazer modal de erro
-        }
-
-        
+        }     
       );
-
-      /*this.ordemService.PutOrdemServico(this.ordens.id, this.ordens).subscribe(
-        () => {
-        //this.modalMessage = 'Evento salvo com sucesso!';
-        this.openModal();
-        },
-        (error: any) =>{
-          console.error(error);
-          //this.modalMessage = 'Erro ao salvar evento';
-          this.openModal();
-        }
-      );*/
-
     }
   }
 

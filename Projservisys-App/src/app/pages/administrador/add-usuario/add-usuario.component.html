@@ -1,0 +1,130 @@
+<app-nav-adm></app-nav-adm>
+
+<form [formGroup]="form" class="p-1" (ngSubmit)="register()">
+  <div class="container-custom">
+      <div class="content-title">
+          <p>Preencha abaixo as informações para requisitar a ordem de serviço:</p>
+      </div>
+    
+      <div class="form-content">
+      <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating">
+              <label for="exampleFormControlInput1" class="form-label">Primeiro nome do usuário</label>
+              <input type="text" class="form-control"
+              formControlName="primeiroNome"
+              [ngClass]="cssValidator(f.primeiroNome)" 
+              placeholder="">
+              <div *ngIf="f.primeiroNome.errors?.required && f.primeiroNome.touched" class="invalid-feedback">
+                Primeiro Nome é obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <label for="exampleFormControlInput1" class="form-label">Último nome do usuário</label>
+              <input type="text" class="form-control" 
+              formControlName="ultimoNome"
+              [ngClass]="cssValidator(f.ultimoNome)" placeholder="">
+              <div *ngIf="f.ultimoNome.errors && f.ultimoNome.touched" class="invalid-feedback">
+                Último Nome é obrigatório.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-2 mt-4">
+          <div class="col-md">
+            <div class="form-floating">
+              <label for="exampleFormControlInput1" class="form-label">Email do usuário</label>
+              <input type="email" class="form-control" 
+              formControlName="email" 
+              [ngClass]="cssValidator(f.email)" placeholder="nome@exemplo.com">
+              <div *ngIf="f.email.errors?.required && f.email.touched" class="invalid-feedback">
+                E-mail é obrigatório.
+              </div>
+              <div *ngIf="f.email.errors?.email && f.email.touched" class="invalid-feedback">
+                Deve ser um e-mail válido.
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <label for="exampleFormControlInput1" class="form-label">Nick do usuário (username)</label>
+              <input type="text" class="form-control" 
+              formControlName="userName"
+              [ngClass]="cssValidator(f.userName)" placeholder="">
+              <div *ngIf="f.userName.errors && f.userName.touched" class="invalid-feedback">
+                Nick do Usuário é obrigatório.
+              </div>
+              <div *ngIf="f.userName.errors?.minlength && f.userName.touched" class="invalid-feedback">
+                Nick do Usuário deve conter no mínimo 4 caracteres.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="row g-2 mt-4">
+          <div class="col-md">
+              <label for="exampleFormControlInput1" class="form-label">Nível do usuário</label>
+              <select class="form-select" class="form-control"
+              type="tipoUsuario" aria-label="Default select example"
+              formControlName="tipoUsuario" name="tipoUsuario"
+              [ngClass]="cssValidator(f.tipoUsuario)">
+                <option selected>Selecione um nível</option>
+                <option value="Solicitante">Solicitante</option>
+                <option value="Coordenador_TI">Coordenador de T.I.</option>
+                <option value="Tecnico">Técnico de T.I.</option>
+              </select>
+              <div *ngIf="f.tipoUsuario.errors?.required && f.tipoUsuario.touched" class="invalid-feedback">
+                Nível do Usuário é obrigatório.
+              </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <label for="exampleFormControlInput1" class="form-label">Cargo do usuário</label>
+              <!-- <input type="email" class="form-control"  placeholder="Ex.:Professor"> -->
+              <select class="form-select" class="form-control"
+              type="cargo" aria-label="Default select example"
+              formControlName="cargo" name="cargo"
+              [ngClass]="cssValidator(f.cargo)">
+                <option selected>Selecione o cargo</option>
+                <option value="Diretor">Diretor</option>
+                <option value="Coordenador">Coordenador</option>
+                <option value="Professor">Professor</option>
+                <option value="Secretario">Secretária</option>
+                <option value="OrientadorEducacional">Orientador Educacional</option>
+                <option value="TecnicoInformatica">Técnico de Informática</option>
+                <option value="CoordenadorTI">Coordenador de T.I.</option>
+              </select>
+              <div *ngIf="f.cargo.errors?.required && f.cargo.touched" class="invalid-feedback">
+                Cargo é obrigatório.
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <label for="inputPassword5" class="form-label mt-4">Senha</label>
+        <input type="password" id="inputPassword5"
+        class="form-control" aria-describedby="passwordHelpBlock"
+        formControlName="password"
+        [ngClass]="cssValidator(f.password)">
+        <div id="passwordHelpBlock" class="form-text">
+          Sua senha deve conter letras e números e não deve conter espaços, caracteres especiais ou emojis.
+        </div>
+        <div *ngIf="f.password.errors?.required && f.password.touched" class="invalid-feedback">
+          Senha é obrigatória.
+        </div>
+        <div *ngIf="f.password.errors?.minlength && f.password.touched" class="invalid-feedback">
+          A senha deve conter no mínimo 8 caracteres.
+        </div>
+        <div *ngIf="f.password.errors?.maxlength && f.password.touched" class="invalid-feedback">
+          A senha deve ter no máximo 20 caracteres.
+        </div>
+      
+        <div class="d-flex justify-content-end mt-4">
+          <button [disabled]="!form.valid" type="submit" class="btn btn-success btn-cadastrar"> Cadastrar<i class="bi bi-check ml-2"></i></button>
+        </div>
+      </div>
+  </div>
+</form>

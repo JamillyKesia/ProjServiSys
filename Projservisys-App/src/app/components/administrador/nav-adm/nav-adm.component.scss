@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import './../../../../assets/styles/variaveis.scss';
+
+* {
+  font-family: "Sora", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Sora", sans-serif;
+  }
+
+  #navbar-top{
+    box-shadow: 22px 10px 28px 0px rgba(240,240,240,0.83);
+    margin-left: 16%;
+    width: 85%;
+    height: 80px;
+    transition: margin-left 0.3s;
+  }
+
+  .title-page {
+    margin: 0px 1px 0px 15px;
+    font-weight: 600;
+  }
+    
+  .nav-item{
+    width: 150px;
+  }
+
+  .nav-link-clicado {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link i {
+    vertical-align: middle;
+}
+
+  .navs-content {
+    display: flex;
+  }
+  
+  .separator {
+    border: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.607);
+    width: 100%; 
+    margin: 2rem 0; 
+  }
+  
+  .sidebar {
+    height: 100vh;
+    background: rgb(25,120,75);
+    background: linear-gradient(180deg, #465A8D 0%, #19274C 100%);
+    padding-top: 20px;
+    width: 16%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s;
+  }
+  
+  .sidebar .navbar-brand {
+    color: #fff;
+  }
+  
+  .sidebar .nav-item {
+    padding: 4px;
+    align-items: center;
+  }
+  
+  .sidebar .nav-link-clicado {
+    color: #465A8D;
+    font-weight: 600;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    box-sizing: border-box;
+    padding: 10px 5px 10px 10px;
+  }
+  
+  .sidebar .nav-item i {
+    padding-right: 20px;
+  }
+
+
+  .navbarNavDropdown{
+    text-align: center;
+  }
+
+  .navbar-custom {
+    background-color: white;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  
+  .navbar-custom .navbar-text {
+    color: #1a8754;
+  }
+  
+  .navbar-custom .btn-outline-danger {
+    border-color: #1a8754;
+    color: #1a8754;
+  }
+  
+  .navbar-custom .btn-outline-danger:hover {
+    background-color: #1a8754;
+    color: white;
+  }
+  
+  .container-custom {
+    margin: 30px 30px 0px 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      display: none;
+      position: relative;
+    }
+  
+    #navbar-top {
+      left: 0;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  

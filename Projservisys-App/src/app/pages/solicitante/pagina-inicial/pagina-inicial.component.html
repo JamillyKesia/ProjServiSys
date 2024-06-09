@@ -17,7 +17,7 @@
             </tr>
           </thead>
           <tbody *ngIf="ordens && ordens.length">
-            <tr *ngFor="let ordem of ordensFiltradas">
+            <tr *ngFor="let ordem of ordensFiltradas | slice:0:3">
               <td>{{ ordem.id }}</td>
               <td>
                 <!-- [ngClass]="{'badge-warning': ordem.estadoOrdemServico === 'Em andamento', 'badge-success': ordem.estadoOrdemServico === 'Concluída', 'badge-danger': ordem.estadoOrdemServico === 'Rejeitado', 'badge-secondary': ordem.estadoOrdemServico === 'Em análise'}" -->
@@ -44,7 +44,7 @@
         </table>
       </div>
 
-      <app-modal-os></app-modal-os>
+      
 <!-- 
       <div class="" *ngIf="modalSwitch">
         <app-modal-os></app-modal-os>
