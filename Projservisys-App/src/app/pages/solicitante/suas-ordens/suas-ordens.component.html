@@ -1,3 +1,4 @@
+<script src="node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
 <app-nav></app-nav>
 
 <div class="container-custom">
@@ -32,7 +33,7 @@
               </td>
               <td>{{ ordem.dataOrdemServico }}</td>
               <td>
-                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver</button>
+                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openModal(template, ordem.id)">Ver</button>
               </td>
             </tr>
           </tbody>
@@ -48,3 +49,54 @@
         </table>
       </div>
   </div>
+
+
+  <ng-template #template>
+    <div class="modal-content">
+      <div class="modal-header mb-3">
+        <h5 class="modal-title p-3" id="orderModalLabel">Ordem de serviço #{{ ordemSelecionada?.id }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Local de ocorrência:</label>
+              <p>{{ ordemSelecionada?.localEquipamento }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Data da atribuição:</label>
+              <p>{{ ordemSelecionada?.dataOrdemServico }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Tipo do equipamento:</label>
+              <p>{{ ordemSelecionada?.tipoEquipamento }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Status da ordem:</label>
+              <p>{{ ordemSelecionada?.estadoOrdemServico }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Posição do equipamento:</label>
+              <p>{{ ordemSelecionada?.posicaoEquipamento }}</p>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-bold">Serial do equipamento:</label>
+              <p>{{ ordemSelecionada?.serialEquipamento }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label class="form-label fw-bold">Descrição do problema:</label>
+              <p>{{ ordemSelecionada?.descricaoProblema }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  
