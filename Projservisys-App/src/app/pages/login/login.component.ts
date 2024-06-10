@@ -1,121 +1,77 @@
 import { Component } from '@angular/core';
 import { AccountService } from '../../services/account.service';
-import { UserService } from 'src/app/services/user.service';
 import { UserLogin } from 'src/app/models/identity/user-login';
 import { Router } from '@angular/router';
+import { User, TipoUsuarioEnum } from 'src/app/models/identity/user';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [UserService]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
-     //model: any = {};
   model: UserLogin = new UserLogin();
 
   constructor(private accountService: AccountService,
-              private router: Router/*,
-              private toaster: ToastrService*/){}
+              private router: Router) {}
 
-    ngOnInit(): void {}
+  ngOnInit(): void {}
 
-    public login(): void {
-      this.accountService.login(this.model).subscribe(
-        () => { 
-          this.router.navigateByUrl('/home');
-        },
-        (error: any) => {
-          if (error.status == 401){
-            //this.toaster.error('usuario invalido');
-            console.log('usuario invalido');
-          }
-          else console.error(error);
+  public login(): void {
+    this.accountService.login(this.model).subscribe(
+      (user: User) => { 
+        console.log('Usuário logado:', user);
+        const tipoUsuarioNumero = this.convertTipoUsuarioToNumber(user.tipoUsuario);
+        this.redirectUser(tipoUsuarioNumero);
+      },
+      (error: any) => {
+        if (error.status === 401) {
+          console.log('usuário inválido');
+        } else {
+          console.error(error);
         }
-      )
+      }
+    )
+  }
+
+  private convertTipoUsuarioToNumber(tipoUsuario: TipoUsuarioEnum): number {
+    switch (tipoUsuario) {
+      case TipoUsuarioEnum.Solicitante:
+        return 1;
+      case TipoUsuarioEnum.Coordenador_TI:
+        return 2;
+      case TipoUsuarioEnum.Tecnico:
+        return 3;
+      case TipoUsuarioEnum.Administrador:
+        return 4;
+      default:
+        return 0;
     }
+  }
 
-    // public login(): void {
-    //   this.accountService.login(this.model).subscribe(
-    //     () => { 
-    //       const user = this.accountService.getCurrentUser();
-    //       this.redirectUser(user);
-    //     },
-    //     (error: any) => {
-    //       if (error.status === 401){
-    //         console.log('usuario invalido');
-    //       } else {
-    //         console.error(error);
-    //       }
-    //     }
-    //   )
-    // }
-  
-    // private redirectUser(user: any): void {
-    //   switch (user.tipoUsuario) {
-    //     case 'Solicitante':
-    //       this.router.navigate(['/home']);
-    //       break;
-    //     case 'Coordenador_TI':
-    //       this.router.navigate(['/home/coord']);
-    //       break;
-    //     case 'Tecnico':
-    //       this.router.navigate(['/home/cpd']);
-    //       break;
-    //     case 'Administrador':
-    //       this.router.navigate(['/novo-usuario']);
-    //       break;
-    //     default:
-    //       this.router.navigate(['/login']);
-    //       break;
-    //   }
-    // }
-
-    /*public login(): void {
-      this.accountService.login(this.model).subscribe(
-
-        (response: any) => {
-          const userType: TipoUsuarioEnum = response.userType;
-          switch(userType) {
-            case TipoUsuarioEnum.Solicitante:
-              this.router.navigateByUrl('/pagina-inicial');
-              break;
-            case TipoUsuarioEnum.Coordenador_TI:
-              this.router.navigateByUrl('/pagina-inicial-coord');
-              break;
-            case TipoUsuarioEnum.Tecnico:
-              this.router.navigateByUrl('/pagina-inicial-cpd');
-              break;
-            case TipoUsuarioEnum.Administrador:
-              this.router.navigateByUrl('/novo-usuario');
-              break;
-            default:
-              this.router.navigateByUrl('/login');
-              break;
-          }
-        },
-        (error: any) => {
-          if (error.status == 401) {
-            console.log('usuario invalido');
-          } else {
-            console.error(error);
-          }
-        }*/
-
-        /*() => { 
-          this.router.navigateByUrl('/home');
-        },
-        (error: any) => {
-          if (error.status == 401){
-            //this.toaster.error('usuario invalido');
-            console.log('usuario invalido');
-          }
-          else console.error(error);
-        }
-
-
-      );
-    }*/
-
+  private redirectUser(tipoUsuario: number): void {
+    console.log(tipoUsuario);
+    switch (tipoUsuario) {
+      case 1: // Solicitante
+        this.router.navigateByUrl('/home');
+        console.log('Redirecionando para /home');
+        break;
+      case 2: // Coordenador_TI
+        this.router.navigateByUrl('/home/coord');
+        console.log('Redirecionando para /home/coord');
+        break;
+      case 3: // Tecnico
+        this.router.navigateByUrl('/home/cpd');
+        console.log('Redirecionando para /home/cpd');
+        break;
+      case 4: // Administrador
+        this.router.navigateByUrl('/area-adm');
+        console.log('Redirecionando para /area-adm');
+        break;
+      default:
+        this.router.navigateByUrl('/login');
+        console.log('Redirecionando para /login');
+        break;
+    }
+  }
 }

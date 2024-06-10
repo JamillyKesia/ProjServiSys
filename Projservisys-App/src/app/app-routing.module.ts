@@ -11,28 +11,26 @@ import { AprovacoesPendentesComponent } from './pages/coordenador/aprovacoes-pen
 import { SuasAprovacoesComponent } from './pages/coordenador/suas-aprovacoes/suas-aprovacoes.component';
 import { PaginaInicialCpdComponent } from './pages/CPD/pagina-inicial-cpd/pagina-inicial-cpd.component';
 import { OrdensServicoComponent } from './pages/CPD/ordens-servico/ordens-servico.component';
-import { authGuard } from './guard/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
 import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuario.component';
-
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: 'nav', component: NavComponent},
-  { path: 'home', component: PaginaInicialComponent, canActivate: [authGuard]},
+  { path: 'home', component: PaginaInicialComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'nova-ordem', component: NovaOrdemComponent, data: { title: 'Nova Ordem' }, canActivate: [authGuard] },
-  { path: 'suas-ordens', component: SuasOrdensComponent, data: { title: 'Suas Ordens' }, canActivate: [authGuard] },
-  { path: 'home/coord', component: PaginaInicialCoordComponent },
-  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, data: { title: 'Aprovações pendentes' } },
-  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, data: { title: 'Suas aprovações' } },
-  { path: 'home/cpd', component: PaginaInicialCpdComponent },
-  { path: 'ordens-servico', component: OrdensServicoComponent, data: { title: 'Ordens de sevriço' } },
-  { path: 'area-adm', component: AddUsuarioComponent }
+  { path: 'nova-ordem', component: NovaOrdemComponent, canActivate: [AuthGuard] },
+  { path: 'suas-ordens', component: SuasOrdensComponent, canActivate: [AuthGuard] },
+  { path: 'home/coord', component: PaginaInicialCoordComponent, canActivate: [AuthGuard] },
+  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, canActivate: [AuthGuard] },
+  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, canActivate: [AuthGuard] },
+  { path: 'home/cpd', component: PaginaInicialCpdComponent, canActivate: [AuthGuard] },
+  { path: 'ordens-servico', component: OrdensServicoComponent, canActivate: [AuthGuard] },
+  { path: 'area-adm', component: AddUsuarioComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

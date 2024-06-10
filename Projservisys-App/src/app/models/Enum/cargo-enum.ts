@@ -1,6 +1,6 @@
 enum CargoEnum {
     Diretor = 'Diretor',
-    Coordenador = 'Coordenado',
+    Coordenador = 'Coordenador',
     Professor = 'Professor',
     Secretario = 'Secretario',
     OrientadorEducacional = 'OrientadorEducacional',
