@@ -1,81 +1,91 @@
 <app-nav></app-nav>
 
 <div class="container-custom">
-    <div class="content-title">
-        <p>Preencha abaixo as informações para requisitar a ordem de serviço:</p>
-    </div>
+  <div class="content-title">
+    <p>Preencha abaixo as informações para requisitar a ordem de serviço:</p>
+  </div>
   
   <form class="form-content" [formGroup]="formNO">
     <div class="row g-2">
-        <div class="col-md">
-          <div class="form-floating">
-            <label for="exampleFormControlInput1" class="form-label">Local da ocorrência</label>
-            <input type="text" class="form-control" id="local"
-            [ngClass]="cssValidator(fn.localEquipamento)" 
-            formControlName="localEquipamento">
-            <div *ngIf="fn.localEquipamento.errors?.required && fn.localEquipamento.touched" class="invalid-feedback">
-              Local da ocorrência é obrigatório.
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="form-floating">
-            <label for="exampleFormControlInput1" class="form-label">Tipo do equipamento</label>
-            <input type="text" class="form-control" id="tipo" 
-            [ngClass]="cssValidator(fn.tipoEquipamento)" 
-            formControlName="tipoEquipamento">
-            <div *ngIf="fn.tipoEquipamento.errors?.required && fn.tipoEquipamento.touched" class="invalid-feedback">
-              Tipo do equipamento é obrigatório.
-            </div>
-          </div>
+      <div class="col-md">
+        <label for="exampleFormControlInput1" class="form-label">Local da ocorrência</label>
+        <input type="text" class="form-control" id="local"
+               [ngClass]="cssValidator(fn.localEquipamento)" 
+               formControlName="localEquipamento">
+        <div *ngIf="fn.localEquipamento.errors?.required && fn.localEquipamento.touched" class="invalid-feedback">
+          Local da ocorrência é obrigatório.
         </div>
       </div>
+      <div class="col-md">
+        <label for="exampleFormControlInput1" class="form-label">Tipo do equipamento</label>
+        <input type="text" class="form-control" id="tipo" 
+               [ngClass]="cssValidator(fn.tipoEquipamento)" 
+               formControlName="tipoEquipamento">
+        <div *ngIf="fn.tipoEquipamento.errors?.required && fn.tipoEquipamento.touched" class="invalid-feedback">
+          Tipo do equipamento é obrigatório.
+        </div>
+      </div>
+    </div>
     <div class="row g-2 mt-4">
-        <div class="col-md">
-          <div class="form-floating">
-            <label for="exampleFormControlInput1" class="form-label">Posição do equipamento</label>
-            <input type="text" class="form-control" id="posicao"
-            [ngClass]="cssValidator(fn.posicaoEquipamento)" 
-            formControlName="posicaoEquipamento">
-            <div *ngIf="fn.posicaoEquipamento.errors?.required && fn.posicaoEquipamento.touched" class="invalid-feedback">
-              Posição do equipamento é obrigatório.
-            </div>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="form-floating">
-            <label for="exampleFormControlInput1" class="form-label">Serial do equipamento</label>
-            <input type="text" class="form-control" id="serial"
-            [ngClass]="cssValidator(fn.serialEquipamento)"
-            formControlName="serialEquipamento">
-            <div *ngIf="fn.serialEquipamento.errors?.required && fn.serialEquipamento.touched" class="invalid-feedback">
-              Serial é obrigatório.
-            </div>
-            <div *ngIf="fn.serialEquipamento.errors?.minlength && fn.serialEquipamento.touched" class="invalid-feedback">
-              Serial deve conter no mínimo 6 caracteres.
-            </div>
-          </div>
+      <div class="col-md">
+        <label for="exampleFormControlInput1" class="form-label">Posição do equipamento</label>
+        <input type="text" class="form-control" id="posicao"
+               [ngClass]="cssValidator(fn.posicaoEquipamento)" 
+               formControlName="posicaoEquipamento">
+        <div *ngIf="fn.posicaoEquipamento.errors?.required && fn.posicaoEquipamento.touched" class="invalid-feedback">
+          Posição do equipamento é obrigatório.
         </div>
       </div>
+      <div class="col-md">
+        <label for="exampleFormControlInput1" class="form-label">Serial do equipamento</label>
+        <input type="text" class="form-control" id="serial"
+               [ngClass]="cssValidator(fn.serialEquipamento)"
+               formControlName="serialEquipamento">
+        <div *ngIf="fn.serialEquipamento.errors?.required && fn.serialEquipamento.touched" class="invalid-feedback">
+          Serial é obrigatório.
+        </div>
+        <div *ngIf="fn.serialEquipamento.errors?.minlength && fn.serialEquipamento.touched" class="invalid-feedback">
+          Serial deve conter no mínimo 6 caracteres.
+        </div>
+      </div>
+    </div>
     
-      <div class="mb-3 mt-4">
-        <label for="exampleFormControlTextarea1" class="form-label">Descrição do problema</label>
-        <textarea type="text" id="descricao"
-        class="form-control" rows="3" 
-        [ngClass]="cssValidator(fn.descricaoProblema)" 
-        formControlName="descricaoProblema"></textarea>
-        <div *ngIf="fn.descricaoProblema.errors?.required && fn.descricaoProblema.touched" class="invalid-feedback">
-          Descrição do problema é obrigatória.
-        </div>
+    <div class="mb-3 mt-4">
+      <label for="exampleFormControlTextarea1" class="form-label">Descrição do problema</label>
+      <textarea type="text" id="descricao"
+                class="form-control" rows="3" 
+                [ngClass]="cssValidator(fn.descricaoProblema)" 
+                formControlName="descricaoProblema"></textarea>
+      <div *ngIf="fn.descricaoProblema.errors?.required && fn.descricaoProblema.touched" class="invalid-feedback">
+        Descrição do problema é obrigatória.
       </div>
+    </div>
     
-      <div class="d-flex justify-content-end mt-4">
-        <button type="submit" class="btn btn-success" [disabled]="!formNO.valid" (click)="salvarAlteracao()" >Enviar</button>
+    <div class="d-flex justify-content-end mt-4">
+      <button type="submit" class="btn btn-success" [disabled]="!formNO.valid" (click)="salvarAlteracao()">Enviar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Toast Containers -->
+<div class="toast-container">
+  <!-- Success Toast -->
+  <div id="successToast" class="toast align-items-center text-bg-success border-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Ordem cadastrada com sucesso!
       </div>
-    <!-- </div> -->
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
 
-</form>
-
-    <!-- <div class="" *ngIf="modalSwitch == true">
-      <app-modal></app-modal>
-    </div> -->
+  <!-- Error Toast -->
+  <div id="errorToast" class="toast align-items-center text-bg-danger border-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Erro ao cadastrar a ordem!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>

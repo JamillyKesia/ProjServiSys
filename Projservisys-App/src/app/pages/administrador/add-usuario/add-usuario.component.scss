@@ -14,7 +14,10 @@
 .form-content label{
     color: #22408E;
     font-weight: 600;
+    position: inherit;
+    padding: 0;
 }
+
 
 .container-custom {
     padding: 20px;
@@ -34,3 +37,10 @@
     border: #19274C 1px solid;
 }
 
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+  }
+  

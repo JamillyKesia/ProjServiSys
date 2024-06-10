@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +55,8 @@ import { NavAdmComponent } from './components/administrador/nav-adm/nav-adm.comp
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
     HttpClientModule
   ],
   providers: [AccountService,

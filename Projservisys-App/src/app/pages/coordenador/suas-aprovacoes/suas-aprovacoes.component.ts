@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { EstadoOrdemServicoEnum } from 'src/app/models/Enum/estado-ordem-servico-enum';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { OrdemServico } from 'src/app/models/ordem-servico';
-import { OrdemCompartilhadaService } from 'src/app/services/ordem-compartilhada.service';
 import { OrdemService } from 'src/app/services/ordem.service';
+import { OrdemCompartilhadaService } from 'src/app/services/ordem-compartilhada.service';
+import { EstadoOrdemServicoEnum } from 'src/app/models/Enum/estado-ordem-servico-enum';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-suas-aprovacoes',
@@ -12,6 +13,8 @@ import { OrdemService } from 'src/app/services/ordem.service';
 export class SuasAprovacoesComponent implements OnInit {
   public ordens: OrdemServico[] = [];
   public ordensFiltradas: OrdemServico[] = [];
+  public ordemSelecionada: OrdemServico | undefined;
+  modalRef?: BsModalRef;
 
   private _filtrosListado: string = '';
 
@@ -33,24 +36,24 @@ export class SuasAprovacoesComponent implements OnInit {
 
   constructor(
     private ordemService: OrdemService,
-    private ordemCompartilhadaService: OrdemCompartilhadaService
+    private ordemCompartilhadaService: OrdemCompartilhadaService,
+    private modalService: BsModalService
   ) {}
 
   public ngOnInit(): void {
     this.GetOrdemServico();
   }
 
-  public openModel2(id: number): void {
-    const ordem = this.ordens.find(o => o.id === id);
-    if (ordem) {
-      this.ordemCompartilhadaService.mudarOrdem(ordem);
+  public openModal(template: TemplateRef<void>, id: number): void {
+    this.ordemSelecionada = this.ordens.find(o => o.id === id);
+    if (this.ordemSelecionada) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
     }
   }
 
   public GetOrdemServico(): void {
     this.ordemService.GetOrdemServico().subscribe({
       next: (ordens: OrdemServico[]) => {
-        // Filtra as ordens que são 'Aprovada' ou 'NaoAprovada'
         this.ordens = ordens.filter(ordem => 
           ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Aprovada ||
           ordem.estadoOrdemServico === EstadoOrdemServicoEnum.NaoAprovada

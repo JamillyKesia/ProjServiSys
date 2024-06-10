@@ -23,4 +23,4 @@ export class NavCoordComponent {
     this.router.navigateByUrl('/login');
   }
 
-}
+} 

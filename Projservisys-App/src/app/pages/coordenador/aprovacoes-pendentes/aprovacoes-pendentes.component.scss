@@ -19,32 +19,35 @@
 .container-custom {
     padding: 20px;
     margin-left: 16%;
-    width: 80%;
+    width: 82%;
     transition: margin-left 0.3s;
   }
   .card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
-  
 
   .card-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
+    margin-left: 5px;
   }
   
   .card-text {
+    font-size: 0.8rem;
     margin-bottom: 1.5rem;
+    margin: 7px 15px 7px 7px;
   }
   
-  .btn-outline-success {
-    font-size: 0.9rem;
+  .btn-verOrdem {
+    font-size: 0.6rem;
     padding: 0.3rem 0.5rem;
     border-radius: 15px;
   }
   
-  .btn-success, .btn-danger {
+  .btn-card {
     flex: 1;
     margin: 0 0.5rem;
+    font-size: 0.8rem;
   }
   
