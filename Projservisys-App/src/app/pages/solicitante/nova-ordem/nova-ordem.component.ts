@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ValidatorField } from 'src/app/helpers/validator-field';
@@ -8,13 +8,15 @@ import { OrdemService } from 'src/app/services/ordem.service';
 //import { SwitchService } from 'src/app/services/switch.service';
 import { OrdemCompartilhadaService } from 'src/app/services/ordem-compartilhada.service';
 
+// Import Bootstrap's JS
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-nova-ordem',
   templateUrl: './nova-ordem.component.html',
   styleUrls: ['./nova-ordem.component.scss']
 })
-export class NovaOrdemComponent {
+export class NovaOrdemComponent implements OnInit {
   condicao1: boolean = true;
   modalSwitch: boolean = false;
   formNO!: FormGroup;
@@ -42,7 +44,6 @@ export class NovaOrdemComponent {
   }
 
   private validation(): void {
-
     this.formNO = this.fb.group({
       localEquipamento: ['', Validators.required],
       tipoEquipamento: ['', Validators.required],
@@ -61,30 +62,30 @@ export class NovaOrdemComponent {
     return {'is-invalid': campoForm.errors && campoForm.touched};
   }
 
-
   //salvar ordens com api
   public salvarAlteracao(): void {
-    if(this.formNO.valid){
-
-      this.ordens = {... this.formNO.value};
+    if (this.formNO.valid) {
+      this.ordens = { ...this.formNO.value };
       console.log('Dados da nova ordem:', this.ordens);
-      
+
       this.ordemCompartilhadaService.mudarOrdem(this.ordens);
       this.ordemService.PostOrdemServico(this.ordens).subscribe(
         () => {
-        this.modalMessage = 'Evento salvo com sucesso!';
-        this.openModal();
+          this.showToast('successToast');
         },
-        (error: any) =>{
+        (error: any) => {
           console.error(error);
-          this.modalMessage = 'Erro ao salvar evento';
-          this.openModal(); //fazer modal de erro
-        }     
+          this.showToast('errorToast');
+        }
       );
     }
   }
 
-  openModal(){
-    this.modalSwitch = true;
+  showToast(toastId: string): void {
+    const toastElement = document.getElementById(toastId);
+    if (toastElement) {
+      const bootstrapToast = new bootstrap.Toast(toastElement);
+      bootstrapToast.show();
+    }
   }
 }

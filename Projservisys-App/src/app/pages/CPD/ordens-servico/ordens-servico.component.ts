@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { OrdemServico } from 'src/app/models/ordem-servico';
 import { OrdemService } from 'src/app/services/ordem.service';
 import { EstadoOrdemServicoEnum } from 'src/app/models/Enum/estado-ordem-servico-enum';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-ordens-servico',
@@ -11,6 +12,8 @@ import { EstadoOrdemServicoEnum } from 'src/app/models/Enum/estado-ordem-servico
 export class OrdensServicoComponent implements OnInit {
   public ordens: OrdemServico[] = [];
   public ordensFiltradas: OrdemServico[] = [];
+  public ordemSelecionada: OrdemServico | undefined;
+  modalRef?: BsModalRef;
   private _filtrosListado: string = '';
 
   public get filtroLista(): string {
@@ -22,10 +25,17 @@ export class OrdensServicoComponent implements OnInit {
     this.ordensFiltradas = this.filtrarOrdens(this.filtroLista);
   }
 
-  constructor(private ordemService: OrdemService) {}
+  constructor(private ordemService: OrdemService, private modalService: BsModalService) {}
 
   public ngOnInit(): void {
     this.GetOrdemServico();
+  }
+
+  public openModal(template: TemplateRef<void>, id: number): void {
+    this.ordemSelecionada = this.ordens.find(o => o.id === id);
+    if (this.ordemSelecionada) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
+    }
   }
 
   public GetOrdemServico(): void {

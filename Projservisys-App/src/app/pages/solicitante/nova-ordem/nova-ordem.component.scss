@@ -14,6 +14,8 @@
 .form-content label{
     color: $verde-escuro;
     font-weight: 600;
+    position: inherit;
+    padding: 0;
 }
 
 .container-custom {
@@ -23,3 +25,9 @@
     transition: margin-left 0.3s;
   }
   
+  .toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+  }

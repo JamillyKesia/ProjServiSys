@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef  } from '@angular/core';
 import { OrdemServico } from 'src/app/models/ordem-servico';
 import { EstadoOrdemServicoEnum } from 'src/app/models/Enum/estado-ordem-servico-enum';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { OrdemService } from 'src/app/services/ordem.service';
 
@@ -37,9 +38,20 @@ export class SuasOrdensComponent {
     );
   }
 
+  modalRef?: BsModalRef;
+  
   constructor(
-    private ordemService: OrdemService
+    private ordemService: OrdemService,
+    private modalService: BsModalService
   ) { }
+
+  openModal(template: TemplateRef<void>, id: number) {
+    this.ordemSelecionada = this.ordens.find(o => o.id === id);
+    if (this.ordemSelecionada) {
+      this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
+    }
+  }
+  
 
   ngOnInit(): void {
     this.GetOrdemServico();

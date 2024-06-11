@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjServiSys.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29aa2a1a9ca47f12d8699f9fa78855be09ba78c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80feecbb98eeeb0eaa1842c0ae38d9a76adfc064")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjServiSys.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjServiSys.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
