@@ -10,7 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./aprovacoes-pendentes.component.scss']
 })
 export class AprovacoesPendentesComponent implements OnInit {
-  ordensPendentes: OrdemServico[] = [];
+  public ordensPendentes: OrdemServico[] = [];
   public ordemSelecionada: OrdemServico | undefined;
   modalRef?: BsModalRef;
 
@@ -21,6 +21,7 @@ export class AprovacoesPendentesComponent implements OnInit {
 
   ngOnInit() {
     this.loadOrdensPendentes();
+    console.log(this.loadOrdensPendentes);
   }
 
   openModal(template: TemplateRef<void>, id: number) {

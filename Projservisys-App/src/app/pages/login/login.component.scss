@@ -2,18 +2,15 @@
 @import './../../../assets/styles/variaveis.scss';
 
 :host {
-    //representa uma div que engloba todo o código
     display: flex;
     height: 100vh; /* Altura total da viewport */
     background: $degrade-esquerda;
-    //margin: 0;
 
     .left-section {
         display: flex;
         flex-direction: column;
         background: $degrade-esquerda;
         flex: 1;
-        //border-radius: 0px 70px 70px 0px;
 
         .logo {
             width: 300px;
@@ -36,8 +33,6 @@
         background: $cor-direita;
         font-family: 'Inter', sans-serif;
         border-radius: 70px 0px 0px 70px;
-
-
 
         h4 {
             font-family: 'Inter', sans-serif;
@@ -84,35 +79,28 @@
             text-align: center;
             color: $verde-claro;
             margin-left: 20%;
-            margin-bottom: 80%;
+            //margin-bottom: 80%;
         }
 
         #input1,
         #input2 {
-            width: 60%;
-            height: 18%;
+            width: 60%; /* Largura mais adequada */
+            height: 40px; /* Altura normal */
             border-radius: 13px;
-            border: 1px;
-            background: $fundo-input;
             border: 1px solid $borda-input;
-            display: flex;
+            background: $fundo-input;
             margin-left: 20%;
             margin-top: 20px;
             padding-left: 2%;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-family: 'Inter', sans-serif;
         }
 
-        #input1{
+        #input1 {
             margin-bottom: 2%;
         }
 
-        #input2{
-            margin-top: 20px;
-        }
-
         .button {
-            //min-width: 40%;
             font-family: 'Inter', sans-serif;
             padding: 15px 25.5%;
             border-radius: 13px;
@@ -125,7 +113,6 @@
             text-align: center;
             margin-top: 60px;
             margin-left: 20%;
-
         }
 
         .button:hover {
@@ -139,10 +126,9 @@
             font-weight: 700;
             line-height: 25px;
             text-align: center;
-
         }
 
-        .frase-mobile{
+        .frase-mobile {
             display: none;
         }
     }
@@ -150,7 +136,6 @@
 
 @media screen and (max-width: 600px) {
     :host {
-        //width: 100%; /* Ajusta a largura para ocupar 90% da largura da tela */
         background: #43CD95;
         flex-direction: column;
 
@@ -158,41 +143,41 @@
             background: #43CD95;
             border-radius: 0px;
             font-family: 'Inter', sans-serif;
-            flex: none; /* Remover o comportamento flexível */
-            width: auto; /* Definir a largura como automática */
+            flex: none;
+            width: auto;
 
             .logo {
                 width: 40%;
                 height: 50px;
                 margin: 45px 60% 0px 30%;
             }
-    
+
             .img-decor {
-                display: none; /* Oculta o componente */
+                display: none;
             }
         }
 
         .right-section {
             background-color: $branco;
-            margin: 40px 7%;
+            margin: 20px 7%;
             padding: 80px 0px;
             border-radius: 37px;
             font-family: 'Inter', sans-serif;
-            flex: none; /* Remover o comportamento flexível */
-            width: auto; /* Definir a largura como automática */
-        
+            flex: none;
+            width: auto;
+
             h4 {
                 display: none;
             }
-    
+
             h3 {
                 display: none;
             }
-    
+
             p {
-               display: none;
+                display: none;
             }
-    
+
             .login,
             .senha {
                 font-family: 'Inter', sans-serif;
@@ -202,21 +187,21 @@
                 color: $verde-claro;
                 margin-left: 12%;
             }
-    
+
             #input1,
             #input2 {
                 width: 80%;
-                height: 18%;
+                height: 40px; /* Altura normal */
                 border-radius: 13px;
                 background: $fundo-input;
                 border: 1px solid $borda-input;
                 display: flex;
                 margin-left: 10%;
                 margin-top: 20px;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 font-family: 'Inter', sans-serif;
             }
-    
+
             .button {
                 font-family: 'Inter', sans-serif;
                 padding: 10px 32%;
@@ -230,7 +215,7 @@
                 text-align: center;
                 margin: 60px 0px 20px 10%;
             }
-    
+
             .button:hover {
                 font-family: 'Inter', sans-serif;
                 padding: 10px 32%;
@@ -242,10 +227,9 @@
                 font-weight: 700;
                 line-height: 25px;
                 text-align: center;
-    
             }
 
-            .frase-mobile{
+            .frase-mobile {
                 display: block;
                 color: $verde-frase;
                 font-family: 'Inter', sans-serif;
@@ -258,6 +242,5 @@
                 margin-bottom: 10%;
             }
         }
-
     }
 }

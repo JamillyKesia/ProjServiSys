@@ -16,16 +16,16 @@ import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuar
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: PaginaInicialComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: PaginaInicialComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'nova-ordem', component: NovaOrdemComponent, canActivate: [AuthGuard] },
-  { path: 'suas-ordens', component: SuasOrdensComponent, canActivate: [AuthGuard] },
-  { path: 'home/coord', component: PaginaInicialCoordComponent, canActivate: [AuthGuard] },
-  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, canActivate: [AuthGuard] },
-  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, canActivate: [AuthGuard] },
-  { path: 'home/cpd', component: PaginaInicialCpdComponent, canActivate: [AuthGuard] },
-  { path: 'ordens-servico', component: OrdensServicoComponent, canActivate: [AuthGuard] },
-  { path: 'area-adm', component: AddUsuarioComponent, canActivate: [AuthGuard] }
+  { path: 'nova-ordem', component: NovaOrdemComponent },
+  { path: 'suas-ordens', component: SuasOrdensComponent },
+  { path: 'home/coord', component: PaginaInicialCoordComponent },
+  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent },
+  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent },
+  { path: 'home/cpd', component: PaginaInicialCpdComponent },
+  { path: 'ordens-servico', component: OrdensServicoComponent },
+  { path: 'area-adm', component: AddUsuarioComponent }
 ];
 
 @NgModule({

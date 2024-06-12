@@ -14,14 +14,14 @@
                       <h5 class="card-title mb-0">Ordem de serviço {{ ordem.id }}</h5>
                       <!-- <p class="card-text mt-3">Solicitante: {{ ordem.user.userName }}</p> -->
                     </div>
-                    <a href="#" class="btn btn-outline-success p-2">Ver ordem</a>
+                    <!-- <a href="#" class="btn btn-outline-success p-2" (click)="openModal(template, ordem.id)">Ver ordem</a> -->
                   </div>
-                  <div class="d-flex justify-content-between mt-auto">
+                  <!-- <div class="d-flex justify-content-between mt-auto">
                     <button class="btn btn-success me-2" (click)="aprovarOrdem(ordem.id)">Aprovar <i class="bi bi-check"></i></button>
                     <button class="btn btn-danger" (click)="rejeitarOrdem(ordem.id)">Recusar <i class="bi bi-x"></i></button>
-                  </div>
+                  </div> -->
                 </div>
-                <a class="btn btn-outline-success p-2 btn-verOrdem" (click)="openModal(template, ordem.id)">Ver ordem</a>
+                <a class="btn btn-outline-success p-2 btn-outline-success" (click)="openModal(template, ordem.id)">Ver ordem</a>
               </div>
               <div class="d-flex justify-content-between mt-auto">
                 <button class="btn btn-success btn-card me-2" (click)="aprovarOrdem(ordem.id)">Aprovar <i class="bi bi-check"></i></button>
@@ -29,10 +29,11 @@
               </div>
             </div>
           </div>
+          <div *ngIf="!ordensPendentes?.length">
+            <p>Não há ordens pendentes de aprovação.</p>
         </div>
-    <div *ngIf="!ordensPendentes?.length">
-        <p>Não há ordens pendentes de aprovação.</p>
-    </div>
+        </div>
+    
 
 <ng-template #template>
   <div class="modal-content">
@@ -86,3 +87,4 @@
     </div>
   </div>
 </ng-template>
+
