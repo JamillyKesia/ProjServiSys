@@ -1,0 +1,21 @@
+# Ignorar arquivos de build e diretórios gerados pelo Visual Studio e .NET
+
+# Arquivos de build gerados
+bin/
+obj/
+
+# Arquivos gerados pelo compilador .NET
+*.dll
+*.pdb
+
+# Arquivos gerados pelo MSBuild
+*.cache
+*.sourcelink.json
+*.genruntimeconfig.cache
+
+# Arquivos de configuração do projeto
+appsettings.json
+appsettings.Development.json
+
+# Outros arquivos e diretórios específicos do projeto que deseja ignorar
+# Por exemplo, se houver algum arquivo de log específico ou diretórios de cache, você pode adicioná-los aqui
