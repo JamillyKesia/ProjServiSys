@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const user: User | null = JSON.parse(localStorage.getItem('user') || 'null');
-    console.log('Usuário no Guardião:', user);
+    //console.log('Usuário no Guardião:', user);
 
 
     if (user !== null) {
@@ -33,12 +33,12 @@ export class AuthGuard implements CanActivate {
       }
 
       this.router.navigate(['/login']);
-      console.log('Acesso não permitido!');
+      //console.log('Acesso não permitido!');
       return false;
     }
 
     this.router.navigate(['/login']);
-    console.log('Acesso não permitido!');
+    //console.log('Acesso não permitido!');
     return false;
   }
 

@@ -11,7 +11,7 @@ import { AprovacoesPendentesComponent } from './pages/coordenador/aprovacoes-pen
 import { SuasAprovacoesComponent } from './pages/coordenador/suas-aprovacoes/suas-aprovacoes.component';
 import { PaginaInicialCpdComponent } from './pages/CPD/pagina-inicial-cpd/pagina-inicial-cpd.component';
 import { OrdensServicoComponent } from './pages/CPD/ordens-servico/ordens-servico.component';
-//import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
 import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuario.component';
 
 const routes: Routes = [
@@ -31,6 +31,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  //providers: [AuthGuard]
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
