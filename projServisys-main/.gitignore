@@ -1,0 +1,23 @@
+# Ignore bin and obj folders
+bin/
+obj/
+
+# Ignore other common files
+*.user
+*.rsuser
+*.suo
+*.cache
+*.pdb
+*.log
+*.lock
+*.vspscc
+*.vssscc
+.project
+*.csproj.user
+*.csproj.vspscc
+*.csproj.vssscc
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
