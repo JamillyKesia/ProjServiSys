@@ -28,9 +28,8 @@
     
       <!-- Navbar -->
       <nav class="navbar" id="navbar-top">
-          <p class="title-page">Página inicial</p>
-          <span class="navbar-text ml-auto">Thiago Lima</span>
-          <a class="btn btn-outline-danger ml-3" (click)="logout()">Sair</a>
+        <p class="title-page">{{ pageTitle }}</p>
+        <span class="navbar-text ml-auto">{{ currentUser?.primeiroNome }} {{ currentUser?.ultimoNome }}</span>
+        <a (click)="logout()" class="btn btn-outline-danger ml-3" style="cursor: pointer">Sair</a>
       </nav>
-
-     </div>
+    </div>

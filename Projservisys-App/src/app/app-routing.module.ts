@@ -16,16 +16,16 @@ import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuar
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: PaginaInicialComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'nova-ordem', component: NovaOrdemComponent },
-  { path: 'suas-ordens', component: SuasOrdensComponent },
-  { path: 'home/coord', component: PaginaInicialCoordComponent },
-  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent },
-  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent },
-  { path: 'home/cpd', component: PaginaInicialCpdComponent },
-  { path: 'ordens-servico', component: OrdensServicoComponent },
-  { path: 'area-adm', component: AddUsuarioComponent }
+  { path: 'home', component: PaginaInicialComponent, data: { title: 'Página Inicial' } },
+  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  { path: 'nova-ordem', component: NovaOrdemComponent, data: { title: 'Nova Ordem' } },
+  { path: 'suas-ordens', component: SuasOrdensComponent, data: { title: 'Suas Ordens' } },
+  { path: 'home/coord', component: PaginaInicialCoordComponent, data: { title: 'Página Inicial - Coordenador' } },
+  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, data: { title: 'Aprovações Pendentes' } },
+  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, data: { title: 'Suas Aprovações' } },
+  { path: 'home/cpd', component: PaginaInicialCpdComponent, data: { title: 'Página Inicial - CPD' } },
+  { path: 'ordens-servico', component: OrdensServicoComponent, data: { title: 'Ordens de Serviço' } },
+  { path: 'area-adm', component: AddUsuarioComponent, data: { title: 'Área Administrativa' } }
 ];
 
 @NgModule({

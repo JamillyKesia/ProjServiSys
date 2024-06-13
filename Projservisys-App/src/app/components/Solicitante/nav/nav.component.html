@@ -1,38 +1,38 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-  
 
 <!-- Sidebar -->
 <div class="navs-content">
-    <!-- Sidebar -->
-    
-    <div class="sidebar">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid flex-column">
-          <a class="navbar-brand" [routerLink]="'/home'" href=""><img src="../../../assets/images/ServiSysLogoBranca.png" height="27rem"></a>
-          <hr class="separator">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="'/nova-ordem'"><i class="bi bi-plus-circle" style="font-size: 1.3rem;"></i> Nova ordem</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="'/suas-ordens'"><i class="bi bi-list-check" style="font-size: 1.3rem;"></i> Suas ordens</a>
-              </li>
-            </ul>
-          </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid flex-column">
+        <a class="navbar-brand" [routerLink]="'/home'" href="">
+          <img src="../../../assets/images/ServiSysLogoBranca.png" height="27rem">
+        </a>
+        <hr class="separator">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="'/nova-ordem'">
+                <i class="bi bi-plus-circle" style="font-size: 1.3rem;"></i> Nova ordem
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="'/suas-ordens'">
+                <i class="bi bi-list-check" style="font-size: 1.3rem;"></i> Suas ordens
+              </a>
+            </li>
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+  </div>
 
-    <!-- Main content -->
-    
-      <!-- Navbar -->
-      <nav class="navbar" id="navbar-top">
-          <p class="title-page">Página inicial</p>
-          <span class="navbar-text ml-auto">Carolina H.</span>
-          <a (click)="logout()" class="btn btn-outline-danger ml-3" style="cursor: pointer">Sair</a>
-      </nav>
-      
-
-     </div>
+  <!-- Main content -->
+  <nav class="navbar" id="navbar-top">
+    <p class="title-page">{{ pageTitle }}</p>
+    <span class="navbar-text ml-auto">{{ currentUser?.primeiroNome }} {{ currentUser?.ultimoNome }}</span>
+    <a (click)="logout()" class="btn btn-outline-danger ml-3" style="cursor: pointer">Sair</a>
+  </nav>
+</div>

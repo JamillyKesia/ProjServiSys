@@ -5,86 +5,78 @@
         <p>Confira suas aprovações de ordens de serviço no menu “Suas aprovações”. </p>
     </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="ordensPendentes?.length">
-            <div class="col mb-4" *ngFor="let ordem of ordensPendentes">
-              <div class="card h-100">
+    <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="ordensPendentes?.length">
+        <div class="col mb-4" *ngFor="let ordem of ordensPendentes">
+            <div class="card h-100">
                 <div class="card-body d-flex flex-column justify-content-between">
-                  <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div>
-                      <h5 class="card-title mb-0">Ordem de serviço {{ ordemSelecionada?.id }}</h5>
-                      <!-- <p class="card-text mt-3">Solicitante: {{ ordem.user.userName }}</p> -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="card-title mb-0">Ordem de serviço {{ ordem.id }}</h5>
+                        </div>
                     </div>
-                    <!-- <a href="#" class="btn btn-outline-success p-2" (click)="openModal(template, ordem.id)">Ver ordem</a> -->
-                  </div>
-                  <!-- <div class="d-flex justify-content-between mt-auto">
-                    <button class="btn btn-success me-2" (click)="aprovarOrdem(ordem.id)">Aprovar <i class="bi bi-check"></i></button>
-                    <button class="btn btn-danger" (click)="rejeitarOrdem(ordem.id)">Recusar <i class="bi bi-x"></i></button>
-                  </div> -->
+                    <a class="btn btn-outline-success p-2 btn-outline-success" (click)="openModal(template, ordem.id)">Ver ordem</a>
                 </div>
-                <a class="btn btn-outline-success p-2 btn-outline-success" (click)="openModal(template, ordem.id)">Ver ordem</a>
-              </div>
-              <div class="d-flex justify-content-between mt-auto">
-                <button class="btn btn-success btn-card me-2" (click)="aprovarOrdem(ordem.id)">Aprovar <i class="bi bi-check"></i></button>
-                <button class="btn btn-danger btn-card" (click)="rejeitarOrdem(ordem.id)">Recusar <i class="bi bi-x"></i></button>
-              </div>
+                <div class="d-flex justify-content-between mt-auto">
+                    <button class="btn btn-success btn-card me-2" (click)="aprovarOrdem(ordemSelecionada?.id)">Aprovar <i class="bi bi-check"></i></button>
+                    <button class="btn btn-danger btn-card" (click)="rejeitarOrdem(ordemSelecionada?.id)">Recusar <i class="bi bi-x"></i></button>
+                </div>
             </div>
-          </div>
-          <div *ngIf="!ordensPendentes?.length">
-            <p>Não há ordens pendentes de aprovação.</p>
         </div>
-        </div>
-    
+    </div>
+    <div *ngIf="!ordensPendentes?.length">
+        <p>Não há ordens pendentes de aprovação.</p>
+    </div>
+</div>
 
 <ng-template #template>
-  <div class="modal-content">
-    <div class="modal-header mb-3">
-      <h5 class="modal-title p-3" id="orderModalLabel">Ordem de serviço #{{ ordemSelecionada?.id }}</h5>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
+    <div class="modal-content">
+        <div class="modal-header mb-3">
+            <h5 class="modal-title p-3" id="orderModalLabel">Ordem de serviço #{{ ordemSelecionada?.id }}</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Local de ocorrência:</label>
+                        <p>{{ ordemSelecionada?.localEquipamento }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Data da atribuição:</label>
+                        <p>{{ ordemSelecionada?.dataOrdemServico }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Tipo do equipamento:</label>
+                        <p>{{ ordemSelecionada?.tipoEquipamento }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Status da ordem:</label>
+                        <p>{{ ordemSelecionada?.estadoOrdemServico }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Posição do equipamento:</label>
+                        <p>{{ ordemSelecionada?.posicaoEquipamento }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">Serial do equipamento:</label>
+                        <p>{{ ordemSelecionada?.serialEquipamento }}</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold">Descrição do problema:</label>
+                        <p>{{ ordemSelecionada?.descricaoProblema }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success me-2" (click)="aprovarOrdem(ordemSelecionada?.id)">Aprovar <i class="bi bi-check"></i></button>
+            <button class="btn btn-danger" (click)="rejeitarOrdem(ordemSelecionada?.id)">Recusar <i class="bi bi-x"></i></button>
+        </div>
     </div>
-    <div class="modal-body">
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Local de ocorrência:</label>
-            <p>{{ ordemSelecionada?.localEquipamento }}</p>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Data da atribuição:</label>
-            <p>{{ ordemSelecionada?.dataOrdemServico }}</p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Tipo do equipamento:</label>
-            <p>{{ ordemSelecionada?.tipoEquipamento }}</p>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Status da ordem:</label>
-            <p>{{ ordemSelecionada?.estadoOrdemServico }}</p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Posição do equipamento:</label>
-            <p>{{ ordemSelecionada?.posicaoEquipamento }}</p>
-          </div>
-          <div class="col-md-6">
-            <label class="form-label fw-bold">Serial do equipamento:</label>
-            <p>{{ ordemSelecionada?.serialEquipamento }}</p>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-12">
-            <label class="form-label fw-bold">Descrição do problema:</label>
-            <p>{{ ordemSelecionada?.descricaoProblema }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-success me-2" (click)="ordemSelecionada?.id && aprovarOrdem(ordemSelecionada?.id)">Aprovar <i class="bi bi-check"></i></button>
-      <button class="btn btn-danger" (click)="ordemSelecionada?.id && rejeitarOrdem(ordemSelecionada?.id)">Recusar <i class="bi bi-x"></i></button>
-    </div>
-  </div>
 </ng-template>
-

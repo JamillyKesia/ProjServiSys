@@ -21,7 +21,6 @@ export class AprovacoesPendentesComponent implements OnInit {
 
   ngOnInit() {
     this.loadOrdensPendentes();
-    console.log(this.loadOrdensPendentes);
   }
 
   openModal(template: TemplateRef<void>, id: number) {
@@ -42,8 +41,11 @@ export class AprovacoesPendentesComponent implements OnInit {
 
   aprovarOrdem(id: number | undefined) {
     if (id !== undefined) {
-      this.ordemService.AprovarOrdem(id).subscribe({
-        next: () => this.loadOrdensPendentes(),
+      this.ordemService.mudarStatus(id, 'Aprovado').subscribe({
+        next: () => {
+          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id);
+          this.modalRef?.hide();
+        },
         error: (error: any) => console.log(error)
       });
     }
@@ -51,8 +53,11 @@ export class AprovacoesPendentesComponent implements OnInit {
 
   rejeitarOrdem(id: number | undefined) {
     if (id !== undefined) {
-      this.ordemService.RejeitarOrdem(id).subscribe({
-        next: () => this.loadOrdensPendentes(),
+      this.ordemService.mudarStatus(id, 'Rejeitado').subscribe({
+        next: () => {
+          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id !== id);
+          this.modalRef?.hide();
+        },
         error: (error: any) => console.log(error)
       });
     }
