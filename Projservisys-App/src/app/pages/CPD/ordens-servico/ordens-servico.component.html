@@ -35,7 +35,7 @@
           </td>
           <td>{{ ordem.dataOrdemServico }}</td>
           <td>
-            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver</button>
+            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="openModal(template, ordem.id)">Ver</button>
           </td>
         </tr>
       </tbody>
@@ -50,7 +50,6 @@
     </table>
   </div>
 </div>
-
 
 <ng-template #template>
   <div class="modal-content">
@@ -77,10 +76,10 @@
           </div>
           <div class="col-md-6">
             <label class="form-label fw-bold">Status:</label>
-            <select class="form-select" id="status">
-              <option selected>{{ ordemSelecionada?.estadoOrdemServico }}</option>
-              <option value="Concluída">Concluída</option>
-              <option value="Para compra">Para compra</option>
+            <select class="form-select" id="status" [(ngModel)]="novoStatus">
+              <option value="EmAndamento">Em Andamento</option>
+              <option value="Concluida">Concluída</option>
+              <option value="ParaCompra">Para Compra</option>
             </select>
           </div>
         </div>
@@ -103,7 +102,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary">Salvar</button>
+      <button type="button" class="btn btn-primary" (click)="salvarStatus()">Salvar</button>
     </div>
   </div>
 </ng-template>

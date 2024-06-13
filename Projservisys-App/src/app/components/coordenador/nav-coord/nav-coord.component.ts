@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { AccountService } from '../../../services/account.service';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/identity/user';
-import { AccountService } from 'src/app/services/account.service';
-import { filter, map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-coord',
   templateUrl: './nav-coord.component.html',
   styleUrls: ['./nav-coord.component.scss']
 })
-export class NavCoordComponent {
+export class NavCoordComponent implements OnInit {
   currentUser: User | null = null;
   pageTitle: string = '';
 
@@ -25,21 +25,27 @@ export class NavCoordComponent {
     });
 
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map(route => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
-      }),
-      map(route => route.snapshot.data['title'] || 'Página inicial')
-    ).subscribe(title => {
-      this.pageTitle = title;
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.setPageTitle();
     });
+
+    this.activatedRoute.params.subscribe(() => {
+      this.setPageTitle();
+    });
+  }
+
+  setPageTitle(): void {
+    let route = this.activatedRoute;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    const routeTitle = route.snapshot.data['title'];
+    this.pageTitle = routeTitle || 'Página Inicial'; // Se não houver título definido na rota, usa 'Página Inicial'
   }
 
   logout(): void {
     this.accountService.logout();
     this.router.navigateByUrl('/login');
   }
-
-} 
+}

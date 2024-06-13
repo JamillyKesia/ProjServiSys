@@ -50,7 +50,7 @@ namespace ProjServiSysApi.Controller
         {
             try
             {
-                var ordemServico = await _osIService.GetOrdemServicoByIdAsync(User.GetUserId(), id);
+                var ordemServico = await _osIService.GetOrdemServicoByIdAsync(id);
                 if (ordemServico == null) return NoContent();
 
                 return Ok(ordemServico);
@@ -99,11 +99,12 @@ namespace ProjServiSysApi.Controller
         }
 
         [HttpPatch("MudarStatus/{OrdemServicoId}")]
+        [AllowAnonymous]
         public async Task<ActionResult<OrdemServicoDto>> PatchMudarStatusOrdemServico(int OrdemServicoId, EstadoOrdemServicoEnum novoStatus)
         {
             try
             {
-                var ordemServico = await _osIService.UpdateMudarStatusOrdemServico(User.GetUserId(), OrdemServicoId, novoStatus);
+                var ordemServico = await _osIService.UpdateMudarStatusOrdemServico(OrdemServicoId, novoStatus);
                 if (ordemServico == null) return NoContent();
 
                 return Ok(ordemServico);
@@ -115,11 +116,12 @@ namespace ProjServiSysApi.Controller
         }
 
         [HttpPatch("Aprovado/{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<OrdemServicoDto>> PatchAprovadoOrdemServico(int id)
         {
             try
             {
-                var ordemServico = await _osIService.UpdateAprovadoOrdemServico(User.GetUserId(),id);
+                var ordemServico = await _osIService.UpdateAprovadoOrdemServico(id);
                 if (ordemServico == null) return NoContent();
 
                 return Ok(ordemServico);
@@ -131,11 +133,12 @@ namespace ProjServiSysApi.Controller
         }
 
          [HttpPatch("Rejeitado/{id}")]
+         [AllowAnonymous]
         public async Task<ActionResult<OrdemServicoDto>> PatchRejeitadoOrdemServico(int id)
         {
             try
             {
-                var ordemServico = await _osIService.UpdateRejeitadaOrdemServico(User.GetUserId(),id);
+                var ordemServico = await _osIService.UpdateRejeitadaOrdemServico(id);
                 if (ordemServico == null) return NoContent();
 
                 return Ok(ordemServico);

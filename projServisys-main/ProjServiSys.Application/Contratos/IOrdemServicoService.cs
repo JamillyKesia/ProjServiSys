@@ -10,15 +10,15 @@ namespace ProjServiSys.Application.Contratos
     public interface IOrdemServicoService
     {
         Task<OrdemServicoDto> AddOrdensServico(int userId,OrdemServicoDto model);
-        Task<OrdemServicoDto> UpdateOrdemServico(int userId,int osId, OrdemServicoDto model);
-        Task<OrdemServicoDto> UpdateMudarStatusOrdemServico(int userId, int osId, EstadoOrdemServicoEnum novoStatus);
-        Task<OrdemServicoDto> UpdateAprovadoOrdemServico(int userId, int osId);
-        Task<OrdemServicoDto> UpdateRejeitadaOrdemServico(int userId, int osId);
+        Task<OrdemServicoDto> UpdateOrdemServico(int osId, OrdemServicoDto model);
+        Task<OrdemServicoDto> UpdateMudarStatusOrdemServico(int osId, EstadoOrdemServicoEnum novoStatus);
+        Task<OrdemServicoDto> UpdateAprovadoOrdemServico(int osId);
+        Task<OrdemServicoDto> UpdateRejeitadaOrdemServico(int osId);
 
 
 
         Task<OrdemServicoDto[]> GetAllOrdensServicoAsync();
-        Task<OrdemServicoDto> GetOrdemServicoByIdAsync(int userId, int OrdemServicoId);
+        Task<OrdemServicoDto> GetOrdemServicoByIdAsync(int OrdemServicoId);
         Task<OrdemServicoDto[]> GetAllOrdensServicoByUsuarioAsync(int userId);
     }
 }

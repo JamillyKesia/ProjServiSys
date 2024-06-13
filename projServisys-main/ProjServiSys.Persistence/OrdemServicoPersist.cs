@@ -37,11 +37,11 @@ namespace ProjServiSys.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<OrdemServico> GetOrdemServicoByIdAsync(int userId, int OrdemServicoId)
+        public async Task<OrdemServico> GetOrdemServicoByIdAsync(int OrdemServicoId)
         {
             IQueryable<OrdemServico> query = _context.OrdensServico.AsNoTracking();
 
-            query = query.Where(os => os.Id == OrdemServicoId && os.UserId == userId);
+            query = query.Where(os => os.Id == OrdemServicoId);
 
             return await query.FirstOrDefaultAsync();
         }

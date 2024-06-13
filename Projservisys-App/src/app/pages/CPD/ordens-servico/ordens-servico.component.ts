@@ -13,19 +13,23 @@ export class OrdensServicoComponent implements OnInit {
   public ordens: OrdemServico[] = [];
   public ordensFiltradas: OrdemServico[] = [];
   public ordemSelecionada: OrdemServico | undefined;
+  public novoStatus: string = '';
   modalRef?: BsModalRef;
-  private _filtrosListado: string = '';
+  private _filtroListado: string = '';
 
   public get filtroLista(): string {
-    return this._filtrosListado;
+    return this._filtroListado;
   }
 
   public set filtroLista(value: string) {
-    this._filtrosListado = value;
+    this._filtroListado = value;
     this.ordensFiltradas = this.filtrarOrdens(this.filtroLista);
   }
 
-  constructor(private ordemService: OrdemService, private modalService: BsModalService) {}
+  constructor(
+    private ordemService: OrdemService,
+    private modalService: BsModalService,
+  ) {}
 
   public ngOnInit(): void {
     this.GetOrdemServico();
@@ -34,6 +38,7 @@ export class OrdensServicoComponent implements OnInit {
   public openModal(template: TemplateRef<void>, id: number): void {
     this.ordemSelecionada = this.ordens.find(o => o.id === id);
     if (this.ordemSelecionada) {
+      this.novoStatus = this.ordemSelecionada.estadoOrdemServico;
       this.modalRef = this.modalService.show(template, { class: 'modal-xl' });
     }
   }
@@ -41,9 +46,12 @@ export class OrdensServicoComponent implements OnInit {
   public GetOrdemServico(): void {
     this.ordemService.GetOrdemServico().subscribe({
       next: (ordens: OrdemServico[]) => {
-        // Filtra as ordens aprovadas pelo CPD
         this.ordens = ordens.filter(
-          ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Aprovada
+          ordem => 
+            ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Aprovada ||
+            ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Concluida ||
+            ordem.estadoOrdemServico === EstadoOrdemServicoEnum.EmAndamento ||
+            ordem.estadoOrdemServico === EstadoOrdemServicoEnum.ItemParaCompra
         );
         this.ordensFiltradas = this.ordens;
       },
@@ -54,10 +62,10 @@ export class OrdensServicoComponent implements OnInit {
   public filtrarOrdens(tipoFiltro: string): OrdemServico[] {
     if (tipoFiltro === 'todas') {
       return this.ordens;
-    } else if (tipoFiltro === 'Concluida') {
-      return this.ordens.filter(ordens => ordens.estadoOrdemServico === EstadoOrdemServicoEnum.Concluida);
-    } else if (tipoFiltro === 'Em Andamento') {
-      return this.ordens.filter(ordens => ordens.estadoOrdemServico === EstadoOrdemServicoEnum.EmAndamento);
+    } else if (tipoFiltro === 'concluidas') {
+      return this.ordens.filter(ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Concluida);
+    } else if (tipoFiltro === 'emandamento') {
+      return this.ordens.filter(ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.EmAndamento);
     } else {
       return [];
     }
@@ -69,12 +77,26 @@ export class OrdensServicoComponent implements OnInit {
         return 'badge-warning';
       case EstadoOrdemServicoEnum.Concluida:
         return 'badge-success';
-      case EstadoOrdemServicoEnum.NaoAprovada:
-        return 'badge-danger';
-      case EstadoOrdemServicoEnum.EmAnalise:
-        return 'badge-secondary';
-      default:
+      case EstadoOrdemServicoEnum.ItemParaCompra:
+        return 'badge-info';
+      case EstadoOrdemServicoEnum.Aprovada:
         return 'badge-primary';
+      default:
+        return 'badge-secondary';
+    }
+  }
+
+  public salvarStatus(): void {
+    if (this.ordemSelecionada && this.novoStatus) {
+      this.ordemService.mudarStatus(this.ordemSelecionada.id, this.novoStatus).subscribe({
+        next: () => {
+          this.GetOrdemServico();
+          this.modalRef?.hide();
+          
+        },
+        error: () => {
+        }
+      });
     }
   }
 

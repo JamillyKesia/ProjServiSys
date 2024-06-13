@@ -24,7 +24,7 @@
           </td>
           <td>{{ ordem.dataOrdemServico }}</td>
           <td>
-            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Ver</button>
+            <a class="btn btn-secondary" (click)="openModal(template, ordem.id)">Ver ordem</a>
           </td>
         </tr>
       </tbody>

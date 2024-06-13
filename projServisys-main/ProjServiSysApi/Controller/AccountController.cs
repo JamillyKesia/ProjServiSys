@@ -81,8 +81,9 @@ namespace ProjServiSysApi.Controller
                 {
                     userName = user.Username,
                     primeiroNome = user.PrimeiroNome,
-                    token = _tokenService.CreateToken(user).Result,
-                    tipoUsuario = user.TipoUsuario
+                    tipoUsuario = user.TipoUsuario,
+                    token = _tokenService.CreateToken(user).Result
+                    
                 });
             }
             catch (Exception ex)

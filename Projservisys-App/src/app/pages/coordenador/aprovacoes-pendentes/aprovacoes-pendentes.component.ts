@@ -10,7 +10,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./aprovacoes-pendentes.component.scss']
 })
 export class AprovacoesPendentesComponent implements OnInit {
-  public ordensPendentes: OrdemServico[] = [];
+  ordensPendentes: OrdemServico[] = [];
   public ordemSelecionada: OrdemServico | undefined;
   modalRef?: BsModalRef;
 
@@ -39,28 +39,17 @@ export class AprovacoesPendentesComponent implements OnInit {
     });
   }
 
-
-  aprovarOrdem(id: number | undefined) {
-    if (id !== undefined) {
-      this.ordemService.mudarStatus(id, 'Aprovada').subscribe({
-        next: () => {
-          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id);
-          this.modalRef?.hide();
-        },
-        error: (error: any) => console.log(error)
-      });
-    }
+  aprovarOrdem(id: number) {
+    this.ordemService.AprovarOrdem(id).subscribe({
+      next: () => this.loadOrdensPendentes(),
+      error: (error: any) => console.log(error)
+    });
   }
 
-  rejeitarOrdem(id: number | undefined) {
-    if (id !== undefined) {
-      this.ordemService.mudarStatus(id, 'NaoAprovada').subscribe({
-        next: () => {
-          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id !== ordem.id);
-          this.modalRef?.hide();
-        },
-        error: (error: any) => console.log(error)
-      });
-    }
+  rejeitarOrdem(id: number) {
+    this.ordemService.RejeitarOrdem(id).subscribe({
+      next: () => this.loadOrdensPendentes(),
+      error: (error: any) => console.log(error)
+    });
   }
 }
