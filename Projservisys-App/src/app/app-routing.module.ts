@@ -15,17 +15,17 @@ import { AuthGuard } from './guard/auth.guard';
 import { AddUsuarioComponent } from './pages/administrador/add-usuario/add-usuario.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: PaginaInicialComponent, data: { title: 'Página Inicial' } },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: PaginaInicialComponent, data: { title: 'Página Inicial' }, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-  { path: 'nova-ordem', component: NovaOrdemComponent, data: { title: 'Nova Ordem' } },
-  { path: 'suas-ordens', component: SuasOrdensComponent, data: { title: 'Suas Ordens' } },
-  { path: 'home/coord', component: PaginaInicialCoordComponent, data: { title: 'Página Inicial - Coordenador' } },
-  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, data: { title: 'Aprovações Pendentes' } },
-  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, data: { title: 'Suas Aprovações' } },
-  { path: 'home/cpd', component: PaginaInicialCpdComponent, data: { title: 'Página Inicial - CPD' } },
-  { path: 'ordens-servico', component: OrdensServicoComponent, data: { title: 'Ordens de Serviço' } },
-  { path: 'area-adm', component: AddUsuarioComponent, data: { title: 'Área Administrativa' } }
+  { path: 'nova-ordem', component: NovaOrdemComponent, data: { title: 'Nova Ordem' }, canActivate: [AuthGuard]  },
+  { path: 'suas-ordens', component: SuasOrdensComponent, data: { title: 'Suas Ordens' }, canActivate: [AuthGuard] },
+  { path: 'home/coord', component: PaginaInicialCoordComponent, data: { title: 'Página Inicial - Coordenador' }, canActivate: [AuthGuard] },
+  { path: 'aprovacoes-pendentes', component: AprovacoesPendentesComponent, data: { title: 'Aprovações Pendentes' }, canActivate: [AuthGuard] },
+  { path: 'suas-aprovacoes', component: SuasAprovacoesComponent, data: { title: 'Suas Aprovações' }, canActivate: [AuthGuard] },
+  { path: 'home/cpd', component: PaginaInicialCpdComponent, data: { title: 'Página Inicial - CPD' }, canActivate: [AuthGuard] },
+  { path: 'ordens-servico', component: OrdensServicoComponent, data: { title: 'Ordens de Serviço' }, canActivate: [AuthGuard] },
+  { path: 'area-adm', component: AddUsuarioComponent, data: { title: 'Área Administrativa' }, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -10,7 +10,6 @@ import { filter, map } from 'rxjs/operators';
   styleUrls: ['./nav-cpd.component.scss']
 })
 export class NavCpdComponent {
-  
   currentUser: User | null = null;
   pageTitle: string = '';
 
@@ -26,20 +25,28 @@ export class NavCpdComponent {
     });
 
     this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map(route => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
-      }),
-      map(route => route.snapshot.data['title'] || 'Página inicial')
-    ).subscribe(title => {
-      this.pageTitle = title;
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.setPageTitle();
     });
+
+    this.activatedRoute.params.subscribe(() => {
+      this.setPageTitle();
+    });
+  }
+
+  setPageTitle(): void {
+    let route = this.activatedRoute;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    const routeTitle = route.snapshot.data['title'];
+    this.pageTitle = routeTitle || 'Página Inicial'; // Se não houver título definido na rota, usa 'Página Inicial'
   }
 
   logout(): void {
     this.accountService.logout();
     this.router.navigateByUrl('/login');
   }
+
 }
