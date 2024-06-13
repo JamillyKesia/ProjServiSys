@@ -39,9 +39,10 @@ export class AprovacoesPendentesComponent implements OnInit {
     });
   }
 
+
   aprovarOrdem(id: number | undefined) {
     if (id !== undefined) {
-      this.ordemService.mudarStatus(id, 'Aprovado').subscribe({
+      this.ordemService.mudarStatus(id, 'Aprovada').subscribe({
         next: () => {
           this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id);
           this.modalRef?.hide();
@@ -53,9 +54,9 @@ export class AprovacoesPendentesComponent implements OnInit {
 
   rejeitarOrdem(id: number | undefined) {
     if (id !== undefined) {
-      this.ordemService.mudarStatus(id, 'Rejeitado').subscribe({
+      this.ordemService.mudarStatus(id, 'NaoAprovada').subscribe({
         next: () => {
-          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id !== id);
+          this.ordensPendentes = this.ordensPendentes.filter(ordem => ordem.id !== ordem.id);
           this.modalRef?.hide();
         },
         error: (error: any) => console.log(error)
