@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { OrdemServico } from '../models/ordem-servico';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { EstadoOrdemServicoEnum } from '../models/Enum/estado-ordem-servico-enum';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,6 @@ export class OrdemService {
   }
 
   public mudarStatus(id: number, novoStatus: string): Observable<OrdemServico> {
-    return this.http.patch<OrdemServico>(`${this.baseURL}/MudarStatus/${id}`, { estadoOrdemServico: novoStatus }).pipe(take(1));
-  }
+    return this.http.patch<OrdemServico>(`${this.baseURL}/MudarStatus/${id}`, { novoStatus }).pipe(take(1));
+  }    
 }

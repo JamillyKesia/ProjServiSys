@@ -1,12 +1,12 @@
 export enum EstadoOrdemServicoEnum {
-  EmAnalise = "EmAnálise",
-  Aprovada = "Aprovada",
-  NaoAprovada = "NãoAprovada",
-  Concluida = "Concluida",
-  EmAndamento = "EmAndamento",
-  ItemParaCompra = "ItemParaCompra"
-}
-
+    EmAnalise = 'EmAnálise',
+    Aprovada = 'Aprovada',
+    NaoAprovada = 'NãoAprovada',
+    Concluida = 'Concluída',
+    EmAndamento = 'EmAndamento',
+    ItemParaCompra = 'ItemParaCompra'
+  }
+  
 // ordem-servico.ts
 export interface OrdemServico {
   id: number;

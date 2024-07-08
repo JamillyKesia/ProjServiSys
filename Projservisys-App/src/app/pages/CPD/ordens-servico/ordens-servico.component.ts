@@ -13,9 +13,11 @@ export class OrdensServicoComponent implements OnInit {
   public ordens: OrdemServico[] = [];
   public ordensFiltradas: OrdemServico[] = [];
   public ordemSelecionada: OrdemServico | undefined;
-  public novoStatus: string = '';
+  public novoStatus: EstadoOrdemServicoEnum = EstadoOrdemServicoEnum.EmAndamento;
   modalRef?: BsModalRef;
   private _filtroListado: string = '';
+
+  estadoOrdemServicoEnum = EstadoOrdemServicoEnum;
 
   public get filtroLista(): string {
     return this._filtroListado;
@@ -66,6 +68,8 @@ export class OrdensServicoComponent implements OnInit {
       return this.ordens.filter(ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.Concluida);
     } else if (tipoFiltro === 'emandamento') {
       return this.ordens.filter(ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.EmAndamento);
+    } else if (tipoFiltro === 'itemparacompra') {
+      return this.ordens.filter(ordem => ordem.estadoOrdemServico === EstadoOrdemServicoEnum.ItemParaCompra);
     } else {
       return [];
     }
@@ -87,19 +91,18 @@ export class OrdensServicoComponent implements OnInit {
   }
 
   public salvarStatus(): void {
-    if (this.ordemSelecionada && this.novoStatus) {
+    if (this.ordemSelecionada && this.novoStatus != null) {
       this.ordemService.mudarStatus(this.ordemSelecionada.id, this.novoStatus).subscribe({
         next: () => {
           this.GetOrdemServico();
           this.modalRef?.hide();
-          
         },
-        error: () => {
+        error: (error: any) => {
+          console.log(error);
         }
       });
     }
   }
-
-  // Expor o enum para o template
-  estadoOrdemServicoEnum = EstadoOrdemServicoEnum;
+  
+  
 }

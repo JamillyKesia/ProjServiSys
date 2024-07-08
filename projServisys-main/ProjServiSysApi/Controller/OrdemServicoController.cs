@@ -115,6 +115,7 @@ namespace ProjServiSysApi.Controller
             }
         }
 
+
         [HttpPatch("Aprovado/{id}")]
         [AllowAnonymous]
         public async Task<ActionResult<OrdemServicoDto>> PatchAprovadoOrdemServico(int id)

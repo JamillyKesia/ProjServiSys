@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&display=swap');
 @import './../../../assets/styles/variaveis.scss';
 
 :host {
@@ -31,11 +30,11 @@
         flex-direction: column;
         flex: 1;
         background: $cor-direita;
-        font-family: 'Inter', sans-serif;
+       
         border-radius: 70px 0px 0px 70px;
 
         h4 {
-            font-family: 'Inter', sans-serif;
+           
             font-size: 1.875rem;
             font-weight: 700;
             line-height: 36px;
@@ -47,7 +46,7 @@
         }
 
         h3 {
-            font-family: 'Inter', sans-serif;
+           
             font-size: 2.3125rem;
             font-weight: 700;
             line-height: 45px;
@@ -58,7 +57,7 @@
         }
 
         p {
-            font-family: 'Inter', sans-serif;
+           
             font-size: 18px;
             font-weight: 700;
             line-height: 22px;
@@ -71,7 +70,7 @@
 
         .login,
         .senha {
-            font-family: 'Inter', sans-serif;
+           
             font-size: 1.5rem;
             font-weight: 700;
             line-height: 30px;
@@ -93,7 +92,7 @@
             margin-top: 20px;
             padding-left: 2%;
             font-size: 1rem;
-            font-family: 'Inter', sans-serif;
+           
         }
 
         #input1 {
@@ -101,7 +100,7 @@
         }
 
         .button {
-            font-family: 'Inter', sans-serif;
+           
             padding: 15px 25.5%;
             border-radius: 13px;
             border: 2px solid $verde-escuro;
@@ -116,7 +115,6 @@
         }
 
         .button:hover {
-            font-family: 'Inter', sans-serif;
             padding: 15px 25.5%;
             border-radius: 13px;
             border: 2px solid $verde-escuro;
@@ -142,7 +140,7 @@
         .left-section {
             background: #43CD95;
             border-radius: 0px;
-            font-family: 'Inter', sans-serif;
+           
             flex: none;
             width: auto;
 
@@ -162,7 +160,6 @@
             margin: 20px 7%;
             padding: 80px 0px;
             border-radius: 37px;
-            font-family: 'Inter', sans-serif;
             flex: none;
             width: auto;
 
@@ -180,7 +177,6 @@
 
             .login,
             .senha {
-                font-family: 'Inter', sans-serif;
                 font-size: 1.2rem;
                 font-weight: 700;
                 line-height: 30px;
@@ -199,11 +195,9 @@
                 margin-left: 10%;
                 margin-top: 20px;
                 font-size: 1rem;
-                font-family: 'Inter', sans-serif;
             }
 
             .button {
-                font-family: 'Inter', sans-serif;
                 padding: 10px 32%;
                 border-radius: 13px;
                 border: 2px solid $verde-escuro;
@@ -217,7 +211,6 @@
             }
 
             .button:hover {
-                font-family: 'Inter', sans-serif;
                 padding: 10px 32%;
                 border-radius: 13px;
                 border: 2px solid $verde-escuro;
@@ -232,7 +225,7 @@
             .frase-mobile {
                 display: block;
                 color: $verde-frase;
-                font-family: 'Inter', sans-serif;
+               
                 font-size: 18px;
                 font-weight: 700;
                 line-height: 22px;

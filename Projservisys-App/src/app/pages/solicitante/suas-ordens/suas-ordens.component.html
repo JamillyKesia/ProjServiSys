@@ -26,7 +26,6 @@
             <tr *ngFor="let ordem of ordensFiltradas ">
               <td>{{ ordem.id }}</td>
               <td>
-                <!-- [ngClass]="{'badge-warning': ordem.estadoOrdemServico === 'Em andamento', 'badge-success': ordem.estadoOrdemServico === 'Concluída', 'badge-danger': ordem.estadoOrdemServico === 'Rejeitado', 'badge-secondary': ordem.estadoOrdemServico === 'Em análise'}" -->
                 <span [ngClass]="getBadgeClass(ordem.estadoOrdemServico)" class="badge estadoOrdemServico-span">
                   {{ ordem.estadoOrdemServico }}
                 </span>

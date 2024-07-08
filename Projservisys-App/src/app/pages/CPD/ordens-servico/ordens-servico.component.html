@@ -10,6 +10,7 @@
     <button class="btn btn-secondary" (click)="filtrarOrdens('todas')">Todas as ordens</button>
     <button class="btn btn-secondary" (click)="filtrarOrdens('concluidas')">Concluídas</button>
     <button class="btn btn-secondary" (click)="filtrarOrdens('emandamento')">Em andamento</button>
+    <button class="btn btn-secondary" (click)="filtrarOrdens('itemparacompra')">Item para compra</button>
   </div>
 
   <!-- Tabela de ordens de serviço -->
@@ -79,9 +80,9 @@
             <select class="form-select" id="status" [(ngModel)]="novoStatus">
               <option value="EmAndamento">Em Andamento</option>
               <option value="Concluida">Concluída</option>
-              <option value="ParaCompra">Para Compra</option>
+              <option value="ItemParaCompra">Item para compra</option>
             </select>
-          </div>
+          </div>                                     
         </div>
         <div class="row mb-3">
           <div class="col-md-6">
